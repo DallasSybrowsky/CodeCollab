@@ -1,0 +1,17 @@
+.footer__logo img{
+width: 15vw;
+}
+
+.permalinks {
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 auto 2.4rem;
+    list-style: none
+}
+
+.permalinks ul li {
+    text-decoration: none;
+}
