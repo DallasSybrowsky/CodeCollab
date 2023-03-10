@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+#muted-link{
+ padding: 20px;
+ font-size: 12px;
+}
+
+#small-text
+{
+  font-size: 12px;
+}
+
+
+#bold{
+  color: #175D8F;
+}
