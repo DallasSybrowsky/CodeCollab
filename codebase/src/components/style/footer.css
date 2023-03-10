@@ -1,17 +1,27 @@
-.footer__logo img{
-width: 15vw;
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
+
+.footer__logo img {
+  min-width: 270px;
+  width: 15vw;
 }
 
 .permalinks {
-    font-size: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0 auto 2.4rem;
-    list-style: none
+  font-family: "Courier Prime", monospace;
+  font-size: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.2rem 1.2rem;
+  list-style: none;
 }
 
-.permalinks ul li {
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+
+.footer__copyright {
+    font-family: "Courier Prime", monospace;
+    font-size: 1.2rem;
+    color: #175D8F
 }

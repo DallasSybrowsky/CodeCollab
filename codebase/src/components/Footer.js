@@ -8,19 +8,19 @@ const Footer = () => {
         <img src={require("../assets/codecollab.png")}></img>
       </a>
       <ul className="permalinks">
-        <li>
+        <li className="footer__links">
           <a href="#home">Home</a>
         </li>
-        <li>
+        <li className="footer__links">
           <a href="#collaborate">Collaborate</a>
         </li>
-        <li>
+        <li className="footer__links">
           <a href="#explore">Explore</a>
         </li>
-        <li>
+        <li className="footer__links">
           <a href="#chat">Chat</a>
         </li>
-        <li>
+        <li className="footer__links">
           <a href="#Profile">Profile</a>
         </li>
       </ul>
