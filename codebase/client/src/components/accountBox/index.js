@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { LoginForm } from "./LoginForm";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 // import  AccountBox from "../accountBox";
-import AccountBox from '../../components/accountBox';
+
 
 const BoxContainer = styled.div`
   width: 280px;
@@ -69,52 +69,49 @@ const InnerContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-    padding-right: 0 1.8em;
-    
+  padding-right: 0 1.8em;
 `;
 
 const backdropVariants = {
-    expanded: {
-        width: "233%",
-        height: "1050px",
-        borderRadius: "20%",
-        transform: "rotate(60deg)"
-    },
-    collapsed: {
-        width: "160%",
-        height: "550px",
-        borderRadius: "50%",
-        transform: "rotate(60deg)"
-    }
-};
-const  expandingTransition = {
-    type: "spring",
-
-    duration: 2.3,
-    stiffness: 30
+  expanded: {
+    width: "233%",
+    height: "1050px",
+    borderRadius: "20%",
+    transform: "rotate(60deg)",
+  },
+  collapsed: {
+    width: "160%",
+    height: "550px",
+    borderRadius: "50%",
+    transform: "rotate(60deg)",
+  },
 };
 
+const expandingTransition = {
+  type: "spring",
+  duration: 2.3,
+  stiffness: 30,
+};
 
+export default function AccountBox(props) {
+  const [isExpanded, setExpanded] = useState(false);
+  const [active, setActive] = useState("true");
 
-// export function AccountBox(props) {
-// const [isExpanded, setExpanded] = useState(false);
-// const [active, setActive] = useState("true");
-
-
-const playExpandingAnimation = () => {
+  const playExpandingAnimation = () => {
     setExpanded(true);
     setTimeout(() => {
-        setExpanded(false);
+      setExpanded(false);
     }, expandingTransition.duration * 1000 - 1500);
-};
-
-
-
+  };
 
   return (
     <BoxContainer>
       <TopContainer>
-        <BackDrop  initial={false} animate={isExpanded ? "expanded" : "collapsed"} variants={backdropVariants} />
+        <BackDrop
+          initial={false}
+          animate={isExpanded ? "expanded" : "collapsed"}
+          variants={backdropVariants}
+        />
         <HeaderContainer>
           <HeaderText>Log In</HeaderText>
           <SmallText>Please Log-in to continue!</SmallText>
@@ -125,27 +122,5 @@ const playExpandingAnimation = () => {
         {/* <p onClick={}>Click me</p> */}
       </InnerContainer>
     </BoxContainer>
-  )
-
-
-
-
-
-
-// export default function AccountBox(props) {
-//   return (
-//     <BoxContainer id="box-container">
-//       <TopContainer id="top-container">
-//         <BackDrop />
-//         <HeaderContainer id="header-container">
-//           <HeaderText>Log In</HeaderText>
-          
-//           <SmallText id ="small-text">Please Log-in to continue!</SmallText>
-//         </HeaderContainer>
-//       </TopContainer>
-//       <InnerContainer id="inner-container">
-//         <LoginForm  id="login-form"/>
-//       </InnerContainer>
-//     </BoxContainer>
-//   );
-// }
+  );
+}
