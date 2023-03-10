@@ -8,7 +8,7 @@ const Nav = () => {
         <img className="logo" src={require("../assets/codecollab.png")}></img>
       </div>
       <div>
-        <ul class="nav__links">          
+        <ul className="nav__links">          
           <li>
             <a href="#collaborate">
               Collaborate
