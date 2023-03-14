@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 
-import Auth from "../../utils/auth";
+import AuthService from "../../utils/auth";
 
 import { AccountContext } from "../../components/accountBox/AccountContext";
 
@@ -43,8 +43,8 @@ export function SignupForm() {
       const { data } = await addUser({
         variables: { ...formState },
       });
-
-      Auth.login(data.addUser.token);
+      AuthService.login(data.addUser.token);
+      console.log(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -84,11 +84,11 @@ export function SignupForm() {
           value={formState.password}
           onChange={handleChange}
         />
-      </FormContainer>
-      {/* )}  */}
       <SubmitButton id="signup-button" type="submit">
         Sign Up
       </SubmitButton>
+      </FormContainer>
+      {/* )}  */}
       <MutedLink id="muted-link" href="#">
         Already have an account?
         <BoldLink id="bold" href="#" onClick={switchToSignin}>
