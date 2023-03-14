@@ -3,10 +3,10 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
-    email: String
-    password: String
-    projects: [Project]!
+    username: String!
+    email: String!
+    password: String!
+    projects: [Project]
   }
 
   type Project {
@@ -15,12 +15,12 @@ const typeDefs = gql`
     projectText: String
     projectAuthor: String
     createdAt: String
-    comments: [Comment]!
+    comments: [Comment]
   }
 
   type Comment {
     _id: ID
-    commentText: String
+    commentText: String!
     commentAuthor: String
     createdAt: String
   }
@@ -32,9 +32,9 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(username: String): User
     projects(username: String): [Project]
-    project(projectId: ID!): Project
+    project(projectId: ID): Project
     me: User
   }
 
