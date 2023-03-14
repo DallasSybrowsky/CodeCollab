@@ -31,7 +31,7 @@ export function LoginForm(props) {
         Forget your password?
       </MutedLink>
 
-      <SubmitButton type="submit">Sign In</SubmitButton>
+      <SubmitButton  id="login-button"type="submit">Sign In</SubmitButton>
 
       <MutedLink id=" muted-link" href="#">
         Don't have an account?
