@@ -5,10 +5,8 @@ import AccountBox from './components/accountBox';
 
 import styled from "styled-components";
 
-function App() {
 
-
-  const AppContainer = styled.div`
+const AppContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -17,6 +15,7 @@ function App() {
   align-items: center;
   `;
 
+function App() {
 
   return (
     <div className="App">
