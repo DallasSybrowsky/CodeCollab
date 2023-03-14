@@ -1,14 +1,29 @@
 import './App.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import AppContainer from './components/accountBox/index'
+import AccountBox from './components/accountBox';
+
 import styled from "styled-components";
 
+
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  `;
+
 function App() {
+
   return (
     <div className="App">
-      <AppContainer>hello</AppContainer>
+     
       <Nav />
+      <AppContainer>
+        <AccountBox />
+      </AppContainer>
      <Footer />
     </div>
   );
