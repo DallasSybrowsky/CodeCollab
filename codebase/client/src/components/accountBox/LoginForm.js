@@ -23,15 +23,15 @@ export function LoginForm(props) {
     //     {({ switchToSignup, switchToSignin, playExpandingAnimation }) => (
     <BoxContainer>
       <FormContainer id="login-container">
-        <Input id="login-input" type="email" placeholder="Email" />
-        <Input  id="login-input" type="password" placeholder="Password" />
+        <Input id="login-input1" type="email" placeholder="Email" />
+        <Input  id="login-input2" type="password" placeholder="Password" />
+      <SubmitButton  id="login-button"type="submit">Sign In</SubmitButton>
       </FormContainer>
 
       <MutedLink id="muted-link" href="#">
         Forget your password?
       </MutedLink>
 
-      <SubmitButton  id="login-button"type="submit">Sign In</SubmitButton>
 
       <MutedLink id=" muted-link" href="#">
         Don't have an account?
