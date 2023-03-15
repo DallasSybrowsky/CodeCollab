@@ -10,22 +10,22 @@ const Nav = () => {
       <div>
         <ul className="nav__links">          
           <li>
-            <a href="#collaborate">
+            <a href="collaborate">
               Collaborate
             </a>
           </li>
           <li>
-            <a href="#explore">
+            <a href="explore">
               Explore
             </a>
           </li>
           <li>
-            <a href="#chat">
+            <a href="chat">
               Chat
             </a>
           </li>
           <li>
-            <a href="#profile">
+            <a href="profile">
               Profile
             </a>
           </li>
