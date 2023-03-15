@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -10,7 +11,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Chat from "./components/accountBox/Chat";
 
 import styled from "styled-components";
@@ -55,43 +56,56 @@ export const socket = io(URL, {
 });
 
 function App() {
+  const [input, setInput] = useState("");
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+  function chatSend(event) {
+    event.preventDefault();
+    console.log("submitted:", input)
+    if (input) {
+      socket.emit('chat message', input);
+      setInput("");
+    }
+  }
   return (
-   
-   
     <ApolloProvider client={client}>
-  
+      {/* Beginning of chat test functionality */}
       <button onClick={() => socket.connect()}>Connect</button>
+      <form onSubmit={chatSend}>
+        <input onChange={handleChange}></input>
+        <button type="submit">Submit</button>
+      </form>
+      <h1>{input}</h1>
+      {/* End of chat test functionality */}
       <Router>
-      <Routes>
-        <Route 
-          exact
-          path="/" 
-          element={
-            <>
-              <Nav />
-              <AppContainer>
-                <AccountBox />
-              </AppContainer>
-              <Footer />
-            </>
-          }
-        />
-        <Route 
-          path="/chat" 
-          element={
-            <>
-              <Nav />
-              <Chat />
-              <Footer />
-            </>
-          } 
-        />
-      </Routes>
-    </Router>
-   
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Nav />
+                <AppContainer>
+                  <AccountBox />
+                </AppContainer>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <>
+                <Nav />
+                <Chat />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </Router>
     </ApolloProvider>
-   
-    
   );
 }
 

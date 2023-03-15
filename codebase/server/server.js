@@ -23,6 +23,10 @@ const io = new Server({
 
 io.on("connection", (socket) => {
   console.log("a user connected");
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+    io.emit('chat message', msg)
+  });
 });
 
 app.use(express.urlencoded({ extended: false }));
