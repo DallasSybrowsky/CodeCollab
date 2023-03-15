@@ -17,6 +17,7 @@ import Chat from "./components/accountBox/Chat";
 import styled from "styled-components";
 
 import { io } from "socket.io-client";
+import SetAvatar from "./components/accountBox/SetAvatar";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -89,6 +90,16 @@ function App() {
                 <AppContainer>
                   <AccountBox />
                 </AppContainer>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/setavatar"
+            element={
+              <>
+                <Nav />
+                <SetAvatar />
                 <Footer />
               </>
             }
