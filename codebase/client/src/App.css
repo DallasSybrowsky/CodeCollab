@@ -29,3 +29,15 @@
 #login-button{
   margin-bottom: 20px !important;
 }
+
+.loader {
+  max-inline-size: 100%;
+}
+
+/* .avatars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  gap: 1em;
+} */
