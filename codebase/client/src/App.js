@@ -109,7 +109,7 @@ const [cards, setCards] = useState([
               </>
             }
           />
-          <Route
+          {/* <Route
             path="/setavatar"
             element={
               <>
@@ -118,7 +118,7 @@ const [cards, setCards] = useState([
                 <Footer />
               </>
             }
-          />
+          /> */}
           <Route
             path="/profile"
             element={
