@@ -9,7 +9,7 @@ const projectSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  projectDescription: {
+  projectText: {
     type: String,
     required: 'You need to leave a description!',
     minlength: 1,
