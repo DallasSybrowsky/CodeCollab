@@ -18,7 +18,8 @@ import styled from "styled-components";
 
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
-import ProfileCard from "./components/accountBox/ProfileCard";
+// import Card from "./components/accountBox/Card";
+import OutlinedCard from "./components/accountBox/Card";
 
 
 const httpLink = createHttpLink({
@@ -73,15 +74,7 @@ function App() {
   }
 //  this is for the profile cards 
 
-const [cards, setCards] = useState([
-  {
-    
-    title: 'What I learned from my visit to The Upside Down',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    author: 'Nancy Wheeler'
-  }
- 
-]);
+
  
 
   return (
@@ -109,7 +102,7 @@ const [cards, setCards] = useState([
               </>
             }
           />
-          {/* <Route
+          <Route
             path="/setavatar"
             element={
               <>
@@ -118,14 +111,14 @@ const [cards, setCards] = useState([
                 <Footer />
               </>
             }
-          /> */}
+          />
           <Route
             path="/profile"
             element={
               <>
                 <Nav />
-                <ProfileCard />
-              
+                <OutlinedCard/>
+             
                 <Footer />
               </>
             }
