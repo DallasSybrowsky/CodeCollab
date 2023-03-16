@@ -2,10 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
-
-
-// import loader from "../../assets/loader.gif";
-
 const AvatarContainer = styled.div`
   color:#FFC442;
   font-family: "Courier Prime", monospace;
