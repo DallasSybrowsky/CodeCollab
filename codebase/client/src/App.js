@@ -11,13 +11,15 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import axios from "axios";
+
 import Chat from "./components/accountBox/Chat";
 
 import styled from "styled-components";
 
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
+import ProfileCard from "./components/accountBox/ProfileCard";
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -69,6 +71,19 @@ function App() {
       setInput("");
     }
   }
+//  this is for the profile cards 
+
+const [cards, setCards] = useState([
+  {
+    
+    title: 'What I learned from my visit to The Upside Down',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    author: 'Nancy Wheeler'
+  }
+ 
+]);
+ 
+
   return (
     <ApolloProvider client={client}>
       {/* Beginning of chat test functionality */}
@@ -104,6 +119,17 @@ function App() {
               </>
             }
           /> */}
+          <Route
+            path="/profile"
+            element={
+              <>
+                <Nav />
+                <ProfileCard />
+              
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/chat"
             element={
