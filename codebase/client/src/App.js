@@ -94,7 +94,7 @@ function App() {
               </>
             }
           />
-          <Route
+          {/* <Route
             path="/setavatar"
             element={
               <>
@@ -103,7 +103,7 @@ function App() {
                 <Footer />
               </>
             }
-          />
+          /> */}
           <Route
             path="/chat"
             element={
