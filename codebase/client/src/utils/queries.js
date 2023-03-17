@@ -19,6 +19,7 @@ export const QUERY_PROJECT = gql`
   query getProjects {
     projects {
       _id
+      projectTitle
       projectText
       projectAuthor
       createdAt
