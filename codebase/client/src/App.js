@@ -20,6 +20,10 @@ import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
 import CardExample from "./components/accountBox/Card";
 
+import ExploreCard from "./components/accountBox/ExploreCard";
+import About from "./components/accountBox/About";
+import ProfileCard from "./components/accountBox/ProfileCard";
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -64,21 +68,34 @@ function App() {
   };
   function chatSend(event) {
     event.preventDefault();
-    console.log("submitted:", input)
+    console.log("submitted:", input);
     if (input) {
-      socket.emit('chat message', input);
+      socket.emit("chat message", input);
       setInput("");
     }
   }
+//  this is for the profile cards 
+
+const [cards, setCards] = useState([
+  {
+    
+    title: 'What I learned from my visit to The Upside Down',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    author: 'Nancy Wheeler'
+  }
+ 
+]);
+ 
+
   return (
     <ApolloProvider client={client}>
       {/* Beginning of chat test functionality */}
-      <button onClick={() => socket.connect()}>Connect</button>
+      {/* <button onClick={() => socket.connect()}>Connect</button>
       <form onSubmit={chatSend}>
         <input onChange={handleChange}></input>
         <button type="submit">Submit</button>
       </form>
-      <h1>{input}</h1>
+      <h1>{input}</h1> */}
       {/* End of chat test functionality */}
       <Router>
         <Routes>
@@ -96,35 +113,40 @@ function App() {
             }
           />
           <Route
-            path="/setavatar"
+            path="/explore"
             element={
               <>
                 <Nav />
-                <SetAvatar />
+               
+                  <ExploreCard
+                    key={ExploreCard.id}
+                    projectTitle={ExploreCard.projectTitle}
+                    projectAuthor={ExploreCard.projectAuthor}
+                  />
+               
                 <Footer />
               </>
             }
           />
-           <Route
+          
+          
+          <Route
             path="/profile"
             element={
               <>
                 <Nav />
-                <CardExample />
+                <ProfileCard 
+                 key={ProfileCard.id}
+                 projectTitle={ProfileCard.projectTitle}
+                 projectDescription={ProfileCard.projectDescription}
+                 />
+              
                 <Footer />
               </>
             }
           />
-          <Route
-            path="/chat"
-            element={
-              <>
-                <Nav />
-                <Chat />
-                <Footer />
-              </>
-            }
-          />
+          
+          
         </Routes>
       </Router>
     </ApolloProvider>
