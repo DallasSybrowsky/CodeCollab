@@ -11,13 +11,14 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import axios from "axios";
+
 import Chat from "./components/accountBox/Chat";
 
 import styled from "styled-components";
 
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
+import CardExample from "./components/accountBox/Card";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -94,7 +95,7 @@ function App() {
               </>
             }
           />
-          {/* <Route
+          <Route
             path="/setavatar"
             element={
               <>
@@ -103,7 +104,17 @@ function App() {
                 <Footer />
               </>
             }
-          /> */}
+          />
+           <Route
+            path="/profile"
+            element={
+              <>
+                <Nav />
+                <CardExample />
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/chat"
             element={
