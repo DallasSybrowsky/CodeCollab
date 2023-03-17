@@ -115,11 +115,19 @@ const ProfileContainer = styled.div`
 
 
 function ProfileCard(props) {
+
+   let data = props.data;
   return (
+    
+    <>
+   
     <ProfileContainer>
-      <div className="profile-button">Create a Project</div>
+    <div>
+    <button className="profile-button">{props.titleButton} Create A Project</button>
+      </div>
       <div key={props.id} className="explore__card">
         <div className="explore__card__title">
+       
           <h3 className="project__title">
             <a href="#">
               Project Title: Hard Coded Title{props.projectTitle}
@@ -132,8 +140,11 @@ function ProfileCard(props) {
           </h4>
           <button className="share-button"> share  your project</button>
         </div>
-      </div>
+        </div>
     </ProfileContainer>
+    </>
   );
+   
+     
 }
 export default ProfileCard;

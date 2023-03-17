@@ -23,6 +23,7 @@ import CardExample from "./components/accountBox/Card";
 import ExploreCard from "./components/accountBox/ExploreCard";
 import About from "./components/accountBox/About";
 import ProfileCard from "./components/accountBox/ProfileCard";
+import ProfileContainer from "./components/accountBox/ProfileCard";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -76,15 +77,7 @@ function App() {
   }
 //  this is for the profile cards 
 
-const [cards, setCards] = useState([
-  {
-    
-    title: 'What I learned from my visit to The Upside Down',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    author: 'Nancy Wheeler'
-  }
- 
-]);
+
  
 
   return (
@@ -123,6 +116,21 @@ const [cards, setCards] = useState([
                     projectTitle={ExploreCard.projectTitle}
                     projectAuthor={ExploreCard.projectAuthor}
                   />
+                  <ExploreCard
+                    key={ExploreCard.id}
+                    projectTitle={ExploreCard.projectTitle}
+                    projectAuthor={ExploreCard.projectAuthor}
+                  />
+                  <ExploreCard
+                    key={ExploreCard.id}
+                    projectTitle={ExploreCard.projectTitle}
+                    projectAuthor={ExploreCard.projectAuthor}
+                  />
+                  <ExploreCard
+                    key={ExploreCard.id}
+                    projectTitle={ExploreCard.projectTitle}
+                    projectAuthor={ExploreCard.projectAuthor}
+                  />
                
                 <Footer />
               </>
@@ -139,7 +147,23 @@ const [cards, setCards] = useState([
                  key={ProfileCard.id}
                  projectTitle={ProfileCard.projectTitle}
                  projectDescription={ProfileCard.projectDescription}
+                
+                
                  />
+                  <ProfileCard
+                 key={ProfileCard.id}
+                 projectTitle={ProfileCard.projectTitle}
+                 projectDescription={ProfileCard.projectDescription}
+                
+                
+                 />
+                  <ProfileCard 
+                 key={ProfileCard.id}
+                 projectTitle={ProfileCard.projectTitle}
+                 projectDescription={ProfileCard.projectDescription}
+                
+                
+                  />
               
                 <Footer />
               </>
