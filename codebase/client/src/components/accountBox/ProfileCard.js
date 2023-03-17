@@ -116,7 +116,7 @@ const ProfileContainer = styled.div`
 
 function ProfileCard(props) {
 
-   let data = props.data;
+  //  let data = props.data;
   return (
     
     <>

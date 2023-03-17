@@ -11,15 +11,11 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Chat from "./components/accountBox/Chat";
-
 import styled from "styled-components";
-
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
 import CardExample from "./components/accountBox/Card";
-
 import ExploreCard from "./components/accountBox/ExploreCard";
 import About from "./components/accountBox/About";
 import ProfileCard from "./components/accountBox/ProfileCard";
@@ -28,7 +24,6 @@ import ProfileContainer from "./components/accountBox/ProfileCard";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
-
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("id_token");
@@ -40,13 +35,11 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
 const AppContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -55,13 +48,11 @@ const AppContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 const URL =
   process.env.NODE_ENV === "production" ? undefined : "http://localhost:4000";
 export const socket = io(URL, {
   autoConnect: false,
 });
-
 function App() {
   const [input, setInput] = useState("");
   const handleChange = (e) => {
@@ -110,7 +101,6 @@ function App() {
             element={
               <>
                 <Nav />
-               
                   <ExploreCard
                     key={ExploreCard.id}
                     projectTitle={ExploreCard.projectTitle}
@@ -136,14 +126,22 @@ function App() {
               </>
             }
           />
-          
-          
+          <Route
+            path="/about"
+            element={
+              <>
+                <Nav />
+                <About />
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/profile"
             element={
               <>
                 <Nav />
-                <ProfileCard 
+                <ProfileCard
                  key={ProfileCard.id}
                  projectTitle={ProfileCard.projectTitle}
                  projectDescription={ProfileCard.projectDescription}
@@ -169,12 +167,9 @@ function App() {
               </>
             }
           />
-          
-          
         </Routes>
       </Router>
     </ApolloProvider>
   );
 }
-
 export default App;
