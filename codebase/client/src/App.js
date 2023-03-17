@@ -18,6 +18,7 @@ import styled from "styled-components";
 
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
+import CardExample from "./components/accountBox/Card";
 
 import ExploreCard from "./components/accountBox/ExploreCard";
 import About from "./components/accountBox/About";
@@ -116,58 +117,36 @@ const [cards, setCards] = useState([
             element={
               <>
                 <Nav />
-                {/* {ExploreCard.map((ExploreCard) => ( */}
+               
                   <ExploreCard
                     key={ExploreCard.id}
                     projectTitle={ExploreCard.projectTitle}
                     projectAuthor={ExploreCard.projectAuthor}
                   />
-                {/* ))} */}
+               
                 <Footer />
               </>
             }
           />
-          {/* <Route
-            path="/setavatar"
-            element={
-              <>
-                <Nav />
-                <SetAvatar />
-                <Footer />
-              </>
-            }
-          /> */}
+          
+          
           <Route
             path="/profile"
             element={
               <>
                 <Nav />
-                <ProfileCard />
+                <ProfileCard 
+                 key={ProfileCard.id}
+                 projectTitle={ProfileCard.projectTitle}
+                 projectDescription={ProfileCard.projectDescription}
+                 />
               
                 <Footer />
               </>
             }
           />
-          <Route
-            path="/chat"
-            element={
-              <>
-                <Nav />
-                <Chat />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <>
-                <Nav />
-                <About />
-                <Footer />
-              </>
-            }
-          />
+          
+          
         </Routes>
       </Router>
     </ApolloProvider>

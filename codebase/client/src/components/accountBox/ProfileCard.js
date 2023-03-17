@@ -2,112 +2,138 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
-
-
 const ProfileContainer = styled.div`
-  color:#FFC442;
-  
-  padding: 2em 0;
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  align-items: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-h1, h2, h3, h5 {
-  margin: 0;
-}b
-
-.header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.header h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3em;
-  margin-bottom: 0.2em;
-  line-height: 1.2;
-  color: #222
-}
-
-.header h3 {
-  font-weight: 400;
-  color: #555;
-  width: 30em;
-}
-
-.cards {
-  display: flex;
-  align-items: flex-start;
+  .ExploreContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     justify-content: center;
-}
+  }
 
-.card {
-  background: #fff;
-  width: 24em;
-  border-radius: 0.6em;
-  margin: 1em;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
-  transition: all ease 200ms;
-}
+  .explore__card {
+    position: relative;
+    background-color: var(--color-dark-blue);
+    margin: 1rem;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 0.5rem var(--color-dark-blue);
+    border-radius: 1rem;
+    max-width: 100vw;
+    min-height: 132px;
+    max-height: 15vh;
+    transition: 0.2s ease-in-out;
+  }
 
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
-}
+  .explore__card:hover {
+    box-shadow: 0 0 0.5rem var(--color-light-blue);
+  }
+
+  .project__title {
+    margin-top: 0.8rem;
+    color: var(--color-yellow);
+    text-shadow: 0.1rem 0.1rem 0.25rem var(--color-bg);
+    font-size: 1.5rem;
+    font-family: montserrat;
+    text-decoration: none;
+  }
+
+  .project__title a {
+    color: var(--color-yellow);
+    text-shadow: 0.1rem 0.1rem 0.25rem var(--color-bg);
+    font-size: 1.5rem;
+    font-family: montserrat;
+    text-decoration: none;
+  }
+
+  .project__title a:hover {
+    text-shadow: 0.15rem 0.15rem 0.5rem var(--color-black);
+  }
+
+  .project__author {
+    padding: 1rem 0 0 0.5rem;
+    color: var(--color-bg);
+    font-size: 1.1rem;
+    font-family: montserrat;
+  }
+  .profile-button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--color-dark-blue);
+    color: var(--color-yellow);
+    border: 1px solid var(--color-yellow);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    font-family: montserrat;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    margin 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .profile-button:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-dark-blue);
+    border: 1px solid var(--color-dark-blue);
+    box-shadow: 0 0 0.5rem var(--color-dark-blue);
+  }
+  .share-button {
+    width: 15%;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    background-color: var(--color-dark-blue);
+    color: var(--color-yellow);
+    border: 1px solid var(--color-yellow);
+    border-radius: 12rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    font-size: 1.0rem;
+    font-family: montserrat;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+    margin 0 auto;
+
+  }
+  .share-button:hover {
+    background-color: var(--color-yellow);
+    color: var(--color-dark-blue);
+    border: 1px solid var(--color-dark-blue);
+    box-shadow: 0 0 0.5rem var(--color-dark-blue);
+  }
+
+    
 
 
 
-.card h2 {
-  color: #222;
-  margin-top: -0.2em;
-  line-height: 1.4;
-  font-size: 1.3em;
-  font-weight: 500;
-  font-family: 'Montserrat', sans-serif;
-  transition: all ease-in 100ms;
-}
-
-.card p {
-  color: #777;
-}
-
-.card h5 {
-  color: #bbb;
-  font-weight: 700;
-  font-size: 0.7em;
-  letter-spacing: 0.04em;
-  margin: 1.4em 0 0 0;
-  text-transform: uppercase;
-}
-
-.card-body {
-  padding: 1.2em;
-}
-  
 `;
 
 
 
-
 function ProfileCard(props) {
-
-
-  
-
-    
   return (
     <ProfileContainer>
-       <div className="header">
-        <h1>React Card Component</h1>
-    </div>
-  </ProfileContainer>
+      <div className="profile-button">Create a Project</div>
+      <div key={props.id} className="explore__card">
+        <div className="explore__card__title">
+          <h3 className="project__title">
+            <a href="#">
+              Project Title: Hard Coded Title{props.projectTitle}
+            </a>
+          </h3>
+        </div>
+        <div className="explore__card__content">
+          <h4 className="project__author">
+            Project Description{props.projectDescription}
+          </h4>
+          <button className="share-button"> share  your project</button>
+        </div>
+      </div>
+    </ProfileContainer>
   );
 }
-    
-    export default ProfileCard;
+export default ProfileCard;
