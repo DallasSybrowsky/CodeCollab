@@ -9,21 +9,26 @@ const Nav = () => {
       </div>
       <div>
         <ul className="nav__links">          
-          <li>
+          {/* <li>
             <a href="collaborate">
               Collaborate
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="explore">
               Explore
             </a>
           </li>
           <li>
+            <a href="about">
+              About
+            </a>
+          </li>
+          {/* <li>
             <a href="chat">
               Chat
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="profile">
               Profile

@@ -18,8 +18,10 @@ import styled from "styled-components";
 
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
-import ProfileCard from "./components/accountBox/ProfileCard";
 
+import ExploreCard from "./components/accountBox/ExploreCard";
+import About from "./components/accountBox/About";
+import ProfileCard from "./components/accountBox/ProfileCard";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -65,9 +67,9 @@ function App() {
   };
   function chatSend(event) {
     event.preventDefault();
-    console.log("submitted:", input)
+    console.log("submitted:", input);
     if (input) {
-      socket.emit('chat message', input);
+      socket.emit("chat message", input);
       setInput("");
     }
   }
@@ -87,12 +89,12 @@ const [cards, setCards] = useState([
   return (
     <ApolloProvider client={client}>
       {/* Beginning of chat test functionality */}
-      <button onClick={() => socket.connect()}>Connect</button>
+      {/* <button onClick={() => socket.connect()}>Connect</button>
       <form onSubmit={chatSend}>
         <input onChange={handleChange}></input>
         <button type="submit">Submit</button>
       </form>
-      <h1>{input}</h1>
+      <h1>{input}</h1> */}
       {/* End of chat test functionality */}
       <Router>
         <Routes>
@@ -105,6 +107,22 @@ const [cards, setCards] = useState([
                 <AppContainer>
                   <AccountBox />
                 </AppContainer>
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/explore"
+            element={
+              <>
+                <Nav />
+                {/* {ExploreCard.map((ExploreCard) => ( */}
+                  <ExploreCard
+                    key={ExploreCard.id}
+                    projectTitle={ExploreCard.projectTitle}
+                    projectAuthor={ExploreCard.projectAuthor}
+                  />
+                {/* ))} */}
                 <Footer />
               </>
             }
@@ -136,6 +154,16 @@ const [cards, setCards] = useState([
               <>
                 <Nav />
                 <Chat />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <>
+                <Nav />
+                <About />
                 <Footer />
               </>
             }
