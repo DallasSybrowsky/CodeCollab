@@ -1,6 +1,7 @@
-import React from "react";
+
 import styled from "styled-components";
-// import { useState, useEffect } from "react";
+import { QUERY_PROJECT } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 const ExploreContainer = styled.div`
   .ExploreContainer {
@@ -55,23 +56,32 @@ const ExploreContainer = styled.div`
 `;
 
 function ExploreCard(props) {
+  const { loading, data } = useQuery(QUERY_PROJECT);
+  const projects = data?.projects || [];
+
+  console.log(data);
+
   return (
     <ExploreContainer>
-      <div key={props.id} className="explore__card">
-        <div className="explore__card__title">
-          <h3 className="project__title">
-            <a href="#">
-              Project Title: Hard Coded Title{props.projectTitle}
-            </a>
-          </h3>
+      {projects.map((projects) => (
+        <div key={projects._id} className="explore__card">
+          <div className="explore__card__title">
+            <h3 className="project__title">
+              <a href="#">
+                Project Title: {projects.projectTitle}
+              </a>
+            </h3>
+          </div>
+          <div className="explore__card__content">
+            <h4 className="project__author">
+              Project Author: {projects.projectAuthor}
+            </h4>
+          </div>
         </div>
-        <div className="explore__card__content">
-          <h4 className="project__author">
-            Project Author: Hard Coded Author{props.projectAuthor}
-          </h4>
-        </div>
-      </div>
+      ))}
     </ExploreContainer>
   );
 }
+
 export default ExploreCard;
+
