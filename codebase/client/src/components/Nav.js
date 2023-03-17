@@ -25,11 +25,9 @@ const Nav = () => {
           <li>
             <a href="about">About</a>
           </li>
-          <li>
             {Auth.loggedIn() ? (
               <>
                 <li>
-                  {" "}
                   <a href="profile">My Projects</a>
                 </li>
                 <li onClick={logout}>
@@ -37,14 +35,10 @@ const Nav = () => {
                 </li>
               </>
             ) : (
-              <>
                 <li>
-                  {" "}
                   <a href="/">Login</a>
                 </li>
-              </>
             )}
-          </li>
         </ul>
       </div>
     </nav>

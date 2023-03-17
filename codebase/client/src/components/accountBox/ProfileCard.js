@@ -105,35 +105,67 @@ const ProfileContainer = styled.div`
     border: 1px solid var(--color-dark-blue);
     box-shadow: 0 0 0.5rem var(--color-dark-blue);
   }
-
-    
-
-
-
 `;
 
-
-
 function ProfileCard(props) {
+  // TODO: This is dummy data - get real data through query
+  const test = [
+    {
+      projectTitle: "Bibliomania",
+      projectText: "Connect with new books!",
+      projectAuthor: "Dallas Sybrowsky",
+      createdAt: "2021-03-01T00:00:00.000Z",
+      comments: [],
+    },
+    {
+      projectTitle: "FidoFind",
+      projectText: "Connect with new books!",
+      projectAuthor: "Dallas Sybrowsky",
+      createdAt: "2021-03-01T00:00:00.000Z",
+      comments: [],
+    },
+    {
+      projectTitle: "New Portfolio",
+      projectText: "Connect with new books!",
+      projectAuthor: "Dallas Sybrowsky",
+      createdAt: "2021-03-01T00:00:00.000Z",
+      comments: [],
+    },
+  ];
+
+  const renderProjects = () => {
+    let result = null;
+
+    if (test) {
+      result = test.map((project, i) => {
+        return (
+          <ProfileContainer>
+            <div key={i} className="explore__card">
+              <div className="explore__card__title">
+                <h3 className="project__title">
+                  <a href="#">Project Title: {project.projectTitle}</a>
+                </h3>
+              </div>
+              <div className="explore__card__content">
+                <h4 className="project__author">
+                  Project Description: {project.projectDescription}
+                </h4>
+                <button className="share-button"> share your project</button>
+              </div>
+            </div>
+          </ProfileContainer>
+        );
+      });
+    }
+
+    return result;
+  };
+
   return (
-    <ProfileContainer>
+    <>
       <div className="profile-button">Create a Project</div>
-      <div key={props.id} className="explore__card">
-        <div className="explore__card__title">
-          <h3 className="project__title">
-            <a href="#">
-              Project Title: Hard Coded Title{props.projectTitle}
-            </a>
-          </h3>
-        </div>
-        <div className="explore__card__content">
-          <h4 className="project__author">
-            Project Description{props.projectDescription}
-          </h4>
-          <button className="share-button"> share  your project</button>
-        </div>
-      </div>
-    </ProfileContainer>
+      {renderProjects()}
+    </>
   );
 }
 export default ProfileCard;

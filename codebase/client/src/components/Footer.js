@@ -9,20 +9,11 @@ const Footer = () => {
       </a>
       <ul className="permalinks">
         <li className="footer__links">
-          <a href="/">Home</a>
-        </li>
-        {/* <li className="footer__links">
-          <a href="#collaborate">Collaborate</a>
-        </li> */}
-        <li className="footer__links">
           <a href="explore">Explore</a>
         </li>
         <li className="footer__links">
           <a href="about">About</a>
         </li>
-        {/* <li className="footer__links">
-          <a href="#chat">Chat</a>
-        </li> */}
         <li className="footer__links">
           <a href="profile">Profile</a>
         </li>
