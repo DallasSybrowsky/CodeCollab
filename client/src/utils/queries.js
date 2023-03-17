@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
       projects {
         _id
         projectTitle
+        projectText
         createdAt
       }
     }
