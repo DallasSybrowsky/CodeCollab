@@ -105,14 +105,7 @@ const ProfileContainer = styled.div`
     border: 1px solid var(--color-dark-blue);
     box-shadow: 0 0 0.5rem var(--color-dark-blue);
   }
-
-    
-
-
-
 `;
-
-
 
 function ProfileCard(props) {
 
