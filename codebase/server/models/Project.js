@@ -21,21 +21,6 @@ const projectSchema = new Schema({
     required: true,
     trim: true,
   },
-  // dsybr: Added members to the schema so projects can have clearly defined members
-  // members: [
-  //   {
-  //     member: {
-  //       type: Schema.Types.ObjectId,
-  //       ref: 'User',
-  //       required: true,
-  //     },
-  //     memberRole: {
-  //       type: String,
-  //       required: true,
-  //       trim: true,
-  //     },
-  //   },
-  // ],
   createdAt: {
     type: Date,
     default: Date.now,

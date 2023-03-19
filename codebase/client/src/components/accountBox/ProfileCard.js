@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
+
 const ProfileContainer = styled.div`
   .ExploreContainer {
     display: grid;
@@ -158,12 +159,13 @@ function ProfileCard(props) {
       });
     }
 
+    
     return result;
   };
 
   return (
     <>
-      <div className="profile-button">Create a Project</div>
+      {/* <div className="profile-button">Create a Project</div> */}
       {renderProjects()}
     </>
   );

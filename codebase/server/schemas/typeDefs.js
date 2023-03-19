@@ -44,7 +44,7 @@ const typeDefs = gql`
     addProject(projectTitle: String!, projectText: String!): Project
     addComment(projectId: ID!, commentText: String!): Project
     removeProject(projectId: ID!): Project
-    removeComment(projecttId: ID!, commentId: ID!): Project
+    removeComment(projectId: ID!, commentId: ID!): Project
   }
 `;
 
