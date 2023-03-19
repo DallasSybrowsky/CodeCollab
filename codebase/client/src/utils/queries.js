@@ -20,7 +20,7 @@ export const QUERY_PROJECTS = gql`
     projects {
       _id
       projectTitle
-      projectText
+      projectDescription
       projectAuthor
       createdAt
     }
@@ -32,7 +32,7 @@ export const QUERY_SINGLE_PROJECT = gql`
     project(projectId: $projectId) {
       _id
       projectTitle
-      projectText
+      projectDescription
       projectAuthor
       createdAt
       comments {

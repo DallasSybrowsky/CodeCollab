@@ -18,7 +18,7 @@ const ProjectForm = () => {
     update(cache, { data: { addProject } }) {
       try {
         const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
-
+        console.log(projects)
         cache.writeQuery({
           query: QUERY_PROJECTS,
           data: { projects: [addProject, ...projects] },
@@ -49,8 +49,6 @@ const ProjectForm = () => {
       });
       setProjectTitle("");
       setProjectDescription("");
-      console.log(projectTitle)
-      console.log(projectDescription)
     } catch (err) {
       console.error(err);
     }
