@@ -9,7 +9,9 @@ const projectSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+
   projectDescription: {
+
     type: String,
     required: 'You need to leave a description!',
     minlength: 1,
@@ -21,6 +23,8 @@ const projectSchema = new Schema({
     required: true,
     trim: true,
   },
+
+
   createdAt: {
     type: Date,
     default: Date.now,
