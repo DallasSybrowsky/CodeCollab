@@ -145,7 +145,15 @@ function App() {
               </>
             }
           />
-          <Route path="/projects"/>
+          <Route
+            path="/projects/:projectTitle"
+            element={
+              <>
+                <Nav />
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </Router>
     </ApolloProvider>
