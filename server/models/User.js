@@ -19,11 +19,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  // dsybr: Adding new section to fill out more of our profiles
-  // interests: {
-  //   type: [String],
-  //   required: true,
-  // },
   projects: [
     {
       type: Schema.Types.ObjectId,

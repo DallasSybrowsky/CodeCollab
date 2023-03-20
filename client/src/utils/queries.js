@@ -9,19 +9,18 @@ export const QUERY_USER = gql`
       projects {
         _id
         projectTitle
-        projectText
         createdAt
       }
     }
   }
 `;
 
-export const QUERY_PROJECT = gql`
+export const QUERY_PROJECTS = gql`
   query getProjects {
     projects {
       _id
       projectTitle
-      projectText
+      projectDescription
       projectAuthor
       createdAt
     }
@@ -32,7 +31,8 @@ export const QUERY_SINGLE_PROJECT = gql`
   query getSingleProject($projectId: ID!) {
     project(projectId: $projectId) {
       _id
-      projectText
+      projectTitle
+      projectDescription
       projectAuthor
       createdAt
       comments {
@@ -51,8 +51,9 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      project {
+      projects {
         _id
+        projectTitle
         projectText
         projectAuthor
         createdAt

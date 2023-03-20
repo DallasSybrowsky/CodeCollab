@@ -23,15 +23,16 @@ class AuthService {
     return false;
   }
 
-  getToken() {
-    return localStorage.getItem('id_token');
-  }
+getUsername() {
+  const token = localStorage.getItem('id_token');
+  const decodedToken = decode(token);
+  const username = decodedToken.data.username;
+  return username;
+}
 
-  getUsername() {
-    const token = localStorage.getItem('id_token');
-    const decodedToken = decode(token);
-    const username = decodedToken.data.username;
-    return username;
+  getToken() {
+    console.log(localStorage.getItem('id_token'))
+    return localStorage.getItem('id_token');
   }
 
   login(idToken) {

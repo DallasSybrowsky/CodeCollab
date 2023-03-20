@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Project {
     _id: ID
     projectTitle: String!
-    projectText: String
+    projectDescription: String
     projectAuthor: String
     createdAt: String
     comments: [Comment]
@@ -41,10 +41,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addProject(projectTitle: String!, projectText: String!): Project
+
+    addProject(projectTitle: String!, projectDescription: String!): Project
     addComment(projectId: ID!, commentText: String!): Project
     removeProject(projectId: ID!): Project
-    removeComment(projecttId: ID!, commentId: ID!): Project
+    removeComment(projectId: ID!, commentId: ID!): Project
   }
 `;
 

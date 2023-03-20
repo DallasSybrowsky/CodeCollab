@@ -16,9 +16,11 @@ import styled from "styled-components";
 import { io } from "socket.io-client";
 import SetAvatar from "./components/accountBox/SetAvatar";
 import CardExample from "./components/accountBox/Card";
+import Explore from "./components/accountBox/Explore";
 import ExploreCard from "./components/accountBox/ExploreCard";
 import About from "./components/accountBox/About";
 import ProfileCard from "./components/accountBox/ProfileCard";
+import ProjectForm from "./components/accountBox/ProjectForm";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -64,24 +66,17 @@ function App() {
       setInput("");
     }
   }
-//  this is for the profile cards
-const [cards, setCards] = useState([
-  {
-    title: 'What I learned from my visit to The Upside Down',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    author: 'Nancy Wheeler'
-  }
-]);
+  //  this is for the profile cards
+  const [cards, setCards] = useState([
+    {
+      title: "What I learned from my visit to The Upside Down",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      author: "Nancy Wheeler",
+    },
+  ]);
   return (
     <ApolloProvider client={client}>
-      {/* Beginning of chat test functionality */}
-      {/* <button onClick={() => socket.connect()}>Connect</button>
-      <form onSubmit={chatSend}>
-        <input onChange={handleChange}></input>
-        <button type="submit">Submit</button>
-      </form>
-      <h1>{input}</h1> */}
-      {/* End of chat test functionality */}
       <Router>
         <Routes>
           <Route
@@ -102,11 +97,12 @@ const [cards, setCards] = useState([
             element={
               <>
                 <Nav />
-                  <ExploreCard
-                    key={ExploreCard.id}
-                    projectTitle={ExploreCard.projectTitle}
-                    projectAuthor={ExploreCard.projectAuthor}
-                  />
+                <ExploreCard
+                  key={ExploreCard.id}
+                  projectTitle={ExploreCard.projectTitle}
+                  projectAuthor={ExploreCard.projectAuthor}
+                />
+
                 <Footer />
               </>
             }
@@ -127,10 +123,22 @@ const [cards, setCards] = useState([
               <>
                 <Nav />
                 <ProfileCard
-                 key={ProfileCard.id}
-                 projectTitle={ProfileCard.projectTitle}
-                 projectDescription={ProfileCard.projectDescription}
-                 />
+                  key={ProfileCard.id}
+                  projectTitle={ProfileCard.projectTitle}
+                  projectDescription={ProfileCard.projectDescription}
+                />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/projectform"
+            element={
+              <>
+                <Nav />
+                               <ProjectForm  key={ProjectForm.id}
+                 projectTitle={ProjectForm.projectTitle}
+                 projectDescription={ProjectForm.projectDescription}/>
                 <Footer />
               </>
             }

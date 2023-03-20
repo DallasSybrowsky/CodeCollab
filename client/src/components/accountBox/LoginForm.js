@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { AccountContext } from "./AccountContext";
+import { AccountContext } from "../../components/accountBox/AccountContext";
 import {
   BoldLink,
   BoxContainer,
@@ -8,15 +8,16 @@ import {
   Input,
   MutedLink,
   SubmitButton,
-} from "./Common";
+} from "../accountBox/Common";
 
 import AuthService from "../../utils/auth";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
+
 export function LoginForm(props) {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -46,8 +47,8 @@ export function LoginForm(props) {
 
     // clear form values
     setFormState({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     });
   };
 
@@ -63,9 +64,9 @@ export function LoginForm(props) {
           type="email"
           placeholder="Email"
           name="email"
-          value={formState.email}
+          value={formState.email} 
           onChange={handleChange}
-        />
+          />
         <Input
           id="login-input2"
           type="password"
@@ -73,15 +74,14 @@ export function LoginForm(props) {
           name="password"
           value={formState.password}
           onChange={handleChange}
-        />
-        <SubmitButton id="login-button" type="submit">
-          Sign In
-        </SubmitButton>
+           />
+        <SubmitButton id="login-button" type="submit">Sign In</SubmitButton>
       </FormContainer>
 
       <MutedLink id="muted-link" href="#">
         Forget your password?
       </MutedLink>
+
 
       <MutedLink id=" muted-link" href="#">
         Don't have an account?

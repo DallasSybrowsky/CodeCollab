@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import { QUERY_PROJECT } from '../../utils/queries';
+import { QUERY_PROJECTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 
 const ExploreContainer = styled.div`
@@ -56,7 +56,7 @@ const ExploreContainer = styled.div`
 `;
 
 function ExploreCard(props) {
-  const { loading, data } = useQuery(QUERY_PROJECT);
+  const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.projects || [];
 
   console.log(data);

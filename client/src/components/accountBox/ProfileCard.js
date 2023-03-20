@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import AuthService from '../../utils/auth';
+import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   .ExploreContainer {
@@ -155,7 +156,7 @@ function ProfileCard(props) {
               </div>
               <div className="explore__card__content">
                 <h4 className="project__author">
-                  Project Description: {project.projectText}
+                  Project Description: {project.projectDescription}
                 </h4>
                 <button className="share-button"> share your project</button>
               </div>
@@ -169,7 +170,8 @@ function ProfileCard(props) {
 
   return (
     <ProfileContainer>
-      <div className="profile-button">Create a Project</div>
+      {/* <div className="profile-button"><a href="projectform">Create a Project</a></div> */}
+      <Link to="/projectform"><button className="profile-button">Create a new project</button></Link>
       {renderProjects()}
       </ProfileContainer>
   );

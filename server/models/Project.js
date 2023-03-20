@@ -9,7 +9,9 @@ const projectSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  projectText: {
+
+  projectDescription: {
+
     type: String,
     required: 'You need to leave a description!',
     minlength: 1,
@@ -21,21 +23,8 @@ const projectSchema = new Schema({
     required: true,
     trim: true,
   },
-  // dsybr: Added members to the schema so projects can have clearly defined members
-  // members: [
-  //   {
-  //     member: {
-  //       type: Schema.Types.ObjectId,
-  //       ref: 'User',
-  //       required: true,
-  //     },
-  //     memberRole: {
-  //       type: String,
-  //       required: true,
-  //       trim: true,
-  //     },
-  //   },
-  // ],
+
+
   createdAt: {
     type: Date,
     default: Date.now,

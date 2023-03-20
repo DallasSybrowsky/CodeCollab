@@ -6,7 +6,7 @@ import { ADD_USER } from "../../utils/mutations";
 
 import AuthService from "../../utils/auth";
 
-import { AccountContext } from "./AccountContext";
+import { AccountContext } from "../../components/accountBox/AccountContext";
 
 import {
   BoldLink,
@@ -15,7 +15,7 @@ import {
   Input,
   MutedLink,
   SubmitButton,
-} from "./Common";
+} from "../accountBox/Common";
 
 export function SignupForm() {
   const [formState, setFormState] = useState({
@@ -28,7 +28,7 @@ export function SignupForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value, formState);
+    console.log(name,value, formState);
     setFormState({
       ...formState,
       [name]: value,
@@ -49,7 +49,7 @@ export function SignupForm() {
       console.error(e);
     }
   };
-  //
+ //     
   const { switchToSignin } = useContext(AccountContext);
 
   return (
@@ -84,9 +84,9 @@ export function SignupForm() {
           value={formState.password}
           onChange={handleChange}
         />
-        <SubmitButton id="signup-button" type="submit">
-          Sign Up
-        </SubmitButton>
+      <SubmitButton id="signup-button" type="submit">
+        Sign Up
+      </SubmitButton>
       </FormContainer>
       {/* )}  */}
       <MutedLink id="muted-link" href="#">
