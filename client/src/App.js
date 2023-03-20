@@ -21,6 +21,7 @@ import ExploreCard from "./components/accountBox/ExploreCard";
 import About from "./components/accountBox/About";
 import ProfileCard from "./components/accountBox/ProfileCard";
 import ProjectForm from "./components/accountBox/ProjectForm";
+import SingleProject from "./components/accountBox/SingleProject";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -54,29 +55,30 @@ export const socket = io(URL, {
   autoConnect: false,
 });
 function App() {
-  const [input, setInput] = useState("");
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
-  function chatSend(event) {
-    event.preventDefault();
-    console.log("submitted:", input);
-    if (input) {
-      socket.emit("chat message", input);
-      setInput("");
-    }
-  }
-  //  this is for the profile cards
-  const [cards, setCards] = useState([
-    {
-      title: "What I learned from my visit to The Upside Down",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      author: "Nancy Wheeler",
-    },
-  ]);
+  // const [input, setInput] = useState("");
+  // const handleChange = (e) => {
+  //   setInput(e.target.value);
+  // };
+  // function chatSend(event) {
+  //   event.preventDefault();
+  //   console.log("submitted:", input);
+  //   if (input) {
+  //     socket.emit("chat message", input);
+  //     setInput("");
+  //   }
+  // }
+  // //  this is for the profile cards
+  // const [cards, setCards] = useState([
+  //   {
+  //     title: "What I learned from my visit to The Upside Down",
+  //     content:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  //     author: "Nancy Wheeler",
+  //   },
+  // ]);
   return (
     <ApolloProvider client={client}>
+      <Nav />
       <Router>
         <Routes>
           <Route
@@ -84,11 +86,9 @@ function App() {
             path="/"
             element={
               <>
-                <Nav />
                 <AppContainer>
                   <AccountBox />
                 </AppContainer>
-                <Footer />
               </>
             }
           />
@@ -96,24 +96,20 @@ function App() {
             path="/explore"
             element={
               <>
-                <Nav />
                 <ExploreCard
                   key={ExploreCard.id}
                   projectTitle={ExploreCard.projectTitle}
                   projectAuthor={ExploreCard.projectAuthor}
                 />
-
-                <Footer />
               </>
             }
+            
           />
           <Route
             path="/about"
             element={
               <>
-                <Nav />
                 <About />
-                <Footer />
               </>
             }
           />
@@ -121,13 +117,11 @@ function App() {
             path="/profile"
             element={
               <>
-                <Nav />
                 <ProfileCard
                   key={ProfileCard.id}
                   projectTitle={ProfileCard.projectTitle}
                   projectDescription={ProfileCard.projectDescription}
                 />
-                <Footer />
               </>
             }
           />
@@ -135,16 +129,29 @@ function App() {
             path="/projectform"
             element={
               <>
-                <Nav />
-                               <ProjectForm  key={ProjectForm.id}
-                 projectTitle={ProjectForm.projectTitle}
-                 projectDescription={ProjectForm.projectDescription}/>
-                <Footer />
+                <ProjectForm
+                  key={ProjectForm.id}
+                  projectTitle={ProjectForm.projectTitle}
+                  projectDescription={ProjectForm.projectDescription}
+                />
+              </>
+            }
+          />
+          <Route
+            path="/projects/:id"
+            element={
+              <>
+                <SingleProject
+                  key={SingleProject.id}
+                  projectTitle={SingleProject.projectTitle}
+                  projectDescription={SingleProject.projectDescription}
+                />
               </>
             }
           />
         </Routes>
       </Router>
+      <Footer />
     </ApolloProvider>
   );
 }

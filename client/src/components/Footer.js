@@ -3,7 +3,7 @@ import "./style/footer.css";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <a className="footer__logo">
         <img src={require("../assets/codecollab.png")}></img>
       </a>
