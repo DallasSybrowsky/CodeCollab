@@ -16,6 +16,7 @@ const resolvers = {
       return Project.find(params).sort({ createdAt: -1 });
     },
     project: async (parent, { projectId }) => {
+      console.log(projectId)
       return Project.findOne({ _id: projectId });
     },
     me: async (parent, args, context) => {

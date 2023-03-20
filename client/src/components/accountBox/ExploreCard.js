@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { QUERY_PROJECTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import { Link } from "react-router-dom";
 
 const ExploreContainer = styled.div`
   .ExploreContainer {
@@ -67,9 +68,9 @@ function ExploreCard(props) {
         <div key={projects._id} className="explore__card">
           <div className="explore__card__title">
             <h3 className="project__title">
-              <a href={'/projects/' + projects.projectTitle}>
+              <Link to={'/projects/' + projects._id} >
                 Project Title: {projects.projectTitle}
-              </a>
+              </Link>
             </h3>
           </div>
           <div className="explore__card__content">
