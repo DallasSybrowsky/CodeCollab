@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-
+import { QUERY_USER } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+import AuthService from '../../utils/auth';
+import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
   .ExploreContainer {
@@ -134,13 +136,18 @@ function ProfileCard(props) {
     },
   ];
 
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: {username: AuthService.getUsername()}
+  });
+  const projects = data?.user.projects || [];
+  console.log(projects)
+
   const renderProjects = () => {
     let result = null;
 
-    if (test) {
-      result = test.map((project, i) => {
+    if (projects) {
+      result = projects.map((project, i) => {
         return (
-          <ProfileContainer>
             <div key={i} className="explore__card">
               <div className="explore__card__title">
                 <h3 className="project__title">
@@ -154,20 +161,19 @@ function ProfileCard(props) {
                 <button className="share-button"> share your project</button>
               </div>
             </div>
-          </ProfileContainer>
         );
       });
     }
 
-    
     return result;
   };
 
   return (
-    <>
-      {/* <div className="profile-button">Create a Project</div> */}
+    <ProfileContainer>
+      {/* <div className="profile-button"><a href="projectform">Create a Project</a></div> */}
+      <Link to="/projectform"><button className="profile-button">Create a new project</button></Link>
       {renderProjects()}
-    </>
+      </ProfileContainer>
   );
 }
 export default ProfileCard;

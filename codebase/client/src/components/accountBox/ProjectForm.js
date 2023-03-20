@@ -17,22 +17,21 @@ const ProjectForm = () => {
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
       try {
-        const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
-        console.log(projects)
-        cache.writeQuery({
-          query: QUERY_PROJECTS,
-          data: { projects: [addProject, ...projects] },
-        });
+        // const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
+        // cache.writeQuery({
+        //   query: QUERY_PROJECTS,
+        //   data: { projects: [addProject, ...projects] },
+        // });
       } catch (e) {
         console.error(e);
       }
 
       // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, projects: [...me.projects, addProject] } },
-      });
+      // const { me } = cache.readQuery({ query: QUERY_ME });
+      // cache.writeQuery({
+      //   query: QUERY_ME,
+      //   data: { me: { ...me, projects: [...me.projects, addProject] } },
+      // });
     },
   });
 
@@ -49,6 +48,7 @@ const ProjectForm = () => {
       });
       setProjectTitle("");
       setProjectDescription("");
+    window.location.assign("/profile")
     } catch (err) {
       console.error(err);
     }

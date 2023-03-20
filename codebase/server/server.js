@@ -13,21 +13,6 @@ const server = new ApolloServer({
   resolvers,
   context: authMiddleware,
 });
-const { Server } = require("socket.io");
-const io = new Server({
-  ...server,
-  cors: {
-    origin: "*",
-  },
-});
-
-io.on("connection", (socket) => {
-  console.log("a user connected");
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-    io.emit('chat message', msg)
-  });
-});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -47,7 +32,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
   db.once("open", () => {
     app.listen(PORT, () => {
-      io.listen(4000)
       console.log(`API server running on port ${PORT}!`);
       console.log(
         `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`

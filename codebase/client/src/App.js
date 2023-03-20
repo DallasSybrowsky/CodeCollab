@@ -66,14 +66,15 @@ function App() {
       setInput("");
     }
   }
-//  this is for the profile cards
-const [cards, setCards] = useState([
-  {
-    title: 'What I learned from my visit to The Upside Down',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    author: 'Nancy Wheeler'
-  }
-]);
+  //  this is for the profile cards
+  const [cards, setCards] = useState([
+    {
+      title: "What I learned from my visit to The Upside Down",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      author: "Nancy Wheeler",
+    },
+  ]);
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -86,7 +87,6 @@ const [cards, setCards] = useState([
                 <Nav />
                 <AppContainer>
                   <AccountBox />
-                  
                 </AppContainer>
                 <Footer />
               </>
@@ -97,12 +97,12 @@ const [cards, setCards] = useState([
             element={
               <>
                 <Nav />
-                  <ExploreCard
-                    key={ExploreCard.id}
-                    projectTitle={ExploreCard.projectTitle}
-                    projectAuthor={ExploreCard.projectAuthor}
-                  />
-              
+                <ExploreCard
+                  key={ExploreCard.id}
+                  projectTitle={ExploreCard.projectTitle}
+                  projectAuthor={ExploreCard.projectAuthor}
+                />
+
                 <Footer />
               </>
             }
@@ -122,14 +122,23 @@ const [cards, setCards] = useState([
             element={
               <>
                 <Nav />
-                <ProjectForm  key={ProjectForm.id}
+                <ProfileCard
+                  key={ProfileCard.id}
+                  projectTitle={ProfileCard.projectTitle}
+                  projectDescription={ProfileCard.projectDescription}
+                />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/projectform"
+            element={
+              <>
+                <Nav />
+                               <ProjectForm  key={ProjectForm.id}
                  projectTitle={ProjectForm.projectTitle}
                  projectDescription={ProjectForm.projectDescription}/>
-                <ProfileCard
-                 key={ProfileCard.id}
-                 projectTitle={ProfileCard.projectTitle}
-                 projectDescription={ProfileCard.projectDescription}
-                 />
                 <Footer />
               </>
             }
