@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { QUERY_USER } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
-import AuthService from '../../utils/auth';
+import { QUERY_USER } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
+import AuthService from "../../utils/auth";
 import { Link } from "react-router-dom";
 
 const ProfileContainer = styled.div`
@@ -56,58 +56,64 @@ const ProfileContainer = styled.div`
     font-size: 1.1rem;
     font-family: montserrat;
   }
-  .profile-button {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    background-color: var(--color-dark-blue);
-    color: var(--color-yellow);
-    border: 1px solid var(--color-yellow);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    font-size: 1.2rem;
-    font-family: montserrat;
-    text-decoration: none;
-    text-align: center;
-    transition: 0.2s ease-in-out;
-    margin 0 auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .profile-button:hover {
-    background-color: var(--color-yellow);
-    color: var(--color-dark-blue);
-    border: 1px solid var(--color-dark-blue);
-    box-shadow: 0 0 0.5rem var(--color-dark-blue);
-  }
-  .share-button {
-    width: 15%;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-    background-color: var(--color-dark-blue);
-    color: var(--color-yellow);
-    border: 1px solid var(--color-yellow);
-    border-radius: 12rem;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    font-size: 1.0rem;
-    font-family: montserrat;
-    text-decoration: none;
-    text-align: center;
-    transition: 0.2s ease-in-out;
-    margin 0 auto;
 
+  
+  
+  .profile-button{
+  font-family: "Courier Prime", monospace;
+  transition: 0.5s;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background:  #ffc442;
+  font-family: "Courier Prime", monospace;
+  box-shadow: 0px 7px 0px 0px #cf920d;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  width: 100%;
+    height: 10vh;
+    margin-top: 20px;
+   color:   #175d8f;
+   
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    padding-top: 7px;
+    transition: 0.5s;
+    
+   
   }
-  .share-button:hover {
-    background-color: var(--color-yellow);
-    color: var(--color-dark-blue);
-    border: 1px solid var(--color-dark-blue);
-    box-shadow: 0 0 0.5rem var(--color-dark-blue);
+    
+ 
+
+}
+
+button:hover{
+  box-shadow: none;
+  transform: translateY(5px);
+  transition: all .1s linear;
+}
+
+    
+  button:hover{
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all .1s linear;
   }
+  button:focus{
+    outline: none;
+    text-decoration: none;
+  }
+  
+  
+
+  
+
+
+
+
 `;
 
 function ProfileCard(props) {
@@ -137,10 +143,10 @@ function ProfileCard(props) {
   ];
 
   const { loading, data } = useQuery(QUERY_USER, {
-    variables: {username: AuthService.getUsername()}
+    variables: { username: AuthService.getUsername() },
   });
   const projects = data?.user.projects || [];
-  console.log(projects)
+  console.log(projects);
 
   const renderProjects = () => {
     let result = null;
@@ -148,19 +154,19 @@ function ProfileCard(props) {
     if (projects) {
       result = projects.map((project, i) => {
         return (
-            <div key={i} className="explore__card">
-              <div className="explore__card__title">
-                <h3 className="project__title">
-                  <Link to={'/projects/' + project._id}>Project Title: {project.projectTitle}</Link>
-                </h3>
-              </div>
-              <div className="explore__card__content">
-                <h4 className="project__author">
-                  Project Description: {project.projectDescription}
-                </h4>
-                <button className="share-button"> share your project</button>
-              </div>
+          <div key={i} className="explore__card">
+            <div className="explore__card__title">
+              <h3 className="project__title">
+                <a href="#">Project Title: {project.projectTitle}</a>
+              </h3>
             </div>
+            <div className="explore__card__content">
+              <h4 className="project__author">
+                Project Description: {project.projectDescription}
+              </h4>
+              {/* <button className="share-button"> share your project</button> */}
+            </div>
+          </div>
         );
       });
     }
@@ -171,9 +177,13 @@ function ProfileCard(props) {
   return (
     <ProfileContainer>
       {/* <div className="profile-button"><a href="projectform">Create a Project</a></div> */}
-      <Link to="/projectform"><button className="profile-button">Create a new project</button></Link>
+      <Link to="/projectform">
+        <button className="profile-button  content">
+          Create a new project
+        </button>
+      </Link>
       {renderProjects()}
-      </ProfileContainer>
+    </ProfileContainer>
   );
 }
 export default ProfileCard;
