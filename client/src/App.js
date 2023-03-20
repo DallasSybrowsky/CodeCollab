@@ -136,13 +136,16 @@ function App() {
             element={
               <>
                 <Nav />
-                               <ProjectForm  key={ProjectForm.id}
-                 projectTitle={ProjectForm.projectTitle}
-                 projectDescription={ProjectForm.projectDescription}/>
+                <ProjectForm
+                  key={ProjectForm.id}
+                  projectTitle={ProjectForm.projectTitle}
+                  projectDescription={ProjectForm.projectDescription}
+                />
                 <Footer />
               </>
             }
           />
+          <Route path="/projects"/>
         </Routes>
       </Router>
     </ApolloProvider>

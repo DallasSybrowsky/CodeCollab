@@ -11,29 +11,31 @@ const ProjectForm = () => {
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
 
-  const [characterCount, setCharacterCount] = useState(0);
-  const [characterCount2, setCharacterCount2] = useState(0);
+  // const [characterCount, setCharacterCount] = useState(0);
+  // const [characterCount2, setCharacterCount2] = useState(0);
 
-  const [addProject, { error }] = useMutation(ADD_PROJECT, {
-    update(cache, { data: { addProject } }) {
-      try {
-        // const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
-        // cache.writeQuery({
-        //   query: QUERY_PROJECTS,
-        //   data: { projects: [addProject, ...projects] },
-        // });
-      } catch (e) {
-        console.error(e);
-      }
+  // const [addProject, { error }] = useMutation(ADD_PROJECT, {
+  //   update(cache, { data: { addProject } }) {
+  //     try {
+  //       // const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
+  //       // cache.writeQuery({
+  //       //   query: QUERY_PROJECTS,
+  //       //   data: { projects: [addProject, ...projects] },
+  //       // });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
 
-      // update me object's cache
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, projects: [...me.projects, addProject] } },
-      // });
-    },
-  });
+  //     // update me object's cache
+  //     // const { me } = cache.readQuery({ query: QUERY_ME });
+  //     // cache.writeQuery({
+  //     //   query: QUERY_ME,
+  //     //   data: { me: { ...me, projects: [...me.projects, addProject] } },
+  //     // });
+  //   },
+  // });
+
+  const [addProject, { error }] = useMutation(ADD_PROJECT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -58,11 +60,11 @@ const ProjectForm = () => {
     const { name, value } = event.target;
     if (name === "projectTitle" && value.length <= 280) {
       setProjectTitle(value);
-      setCharacterCount(value.length);
+      // setCharacterCount(value.length);
     }
     if (name === "projectDescription" && value.length <= 2000) {
       setProjectDescription(value);
-      setCharacterCount2(value.length);
+      // setCharacterCount2(value.length);
     }
   };
 
@@ -72,20 +74,20 @@ const ProjectForm = () => {
 
       {Auth.loggedIn() ? (
         <>
-          <p
+          {/* <p
             className={`m-0 ${
               characterCount === 280|| error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/280
-          </p>
-          <p
+          </p> */}
+          {/* <p
             className={`m-0 ${
               characterCount2 === 2000 || error ? "text-danger" : ""
             }`}
-          >
-            Character Count: {characterCount2}/2000
-          </p>
+          > */}
+            {/* Character Count: {characterCount2}/2000
+          </p> */}
           <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}

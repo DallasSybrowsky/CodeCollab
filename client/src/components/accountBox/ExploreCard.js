@@ -67,7 +67,7 @@ function ExploreCard(props) {
         <div key={projects._id} className="explore__card">
           <div className="explore__card__title">
             <h3 className="project__title">
-              <a href="#">
+              <a href={'/projects/' + projects.projectTitle}>
                 Project Title: {projects.projectTitle}
               </a>
             </h3>
