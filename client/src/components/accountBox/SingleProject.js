@@ -11,17 +11,17 @@ import { QUERY_SINGLE_PROJECT } from "../../utils/queries";
 const SingleProject = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
-console.log(projectId)
+  console.log('hello world')
+  console.log(projectId);
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     // pass URL parameter
     variables: { projectId: projectId },
-});
+  });
 
-
-console.log(data)
+  console.log(data);
   const project = data?.project || {};
 
-  console.log(project)
+  console.log(project);
   if (loading) {
     return <div>Loading...</div>;
   }

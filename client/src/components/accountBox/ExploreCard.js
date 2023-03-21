@@ -68,7 +68,7 @@ function ExploreCard(props) {
         <div key={projects._id} className="explore__card">
           <div className="explore__card__title">
             <h3 className="project__title">
-              <Link to={`/${projects.projectTitle}`} >
+            <Link to={`/projects/${projects._id}`}>
                 {projects.projectTitle}
               </Link>
             </h3>
