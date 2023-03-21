@@ -24,6 +24,19 @@ const projectSchema = new Schema({
     trim: true,
   },
 
+  projectMembers: [
+    {
+      memberId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+      },
+      memberUsername: {
+        type: String,
+      }
+    }
+  ],
+
 
   createdAt: {
     type: Date,

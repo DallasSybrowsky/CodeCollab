@@ -14,6 +14,7 @@ const typeDefs = gql`
     projectTitle: String!
     projectDescription: String
     projectAuthor: String
+    projectMembers: [Member]
     createdAt: String
     comments: [Comment]
   }
@@ -23,6 +24,11 @@ const typeDefs = gql`
     commentText: String!
     commentAuthor: String
     createdAt: String
+  }
+
+  type Member {
+    _id: ID
+    memberUsername: String
   }
 
   type Auth {
@@ -41,7 +47,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-
+    addMember(projectId: ID!, memberId: ID!): Project
     addProject(projectTitle: String!, projectDescription: String!): Project
     addComment(projectId: ID!, commentText: String!): Project
     removeProject(projectId: ID!): Project
