@@ -57,18 +57,23 @@ mutation AddMember($projectId: ID!, $memberId: ID!) {
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($projectId: ID!, $commentText: String!) {
-    addComment(projectId: $projectId, commentText: $commentText) {
+  mutation addComment($projectId: ID!, $commentText: String!, $commentAuthor: String!) {
+  addComment(projectId: $projectId, commentText: $commentText, commentAuthor: $commentAuthor) {
+    _id
+    createdAt
+    projectAuthor
+    projectDescription
+    projectTitle
+    projectMembers {
       _id
-      projectTitle
-      projectDescription
-      projectAuthor
+      memberUsername
+    }
+    comments {
+      _id
+      commentAuthor
+      commentText
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
+}
 `;

@@ -22,8 +22,8 @@ const typeDefs = gql`
   type Comment {
     _id: ID
     commentText: String!
-    commentAuthor: String
-    createdAt: String
+    commentAuthor: String!
+    createdAt: String!
   }
 
   type Member {
@@ -50,7 +50,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addMember(projectId: ID!, memberId: ID!): Project
     addProject(projectTitle: String!, projectDescription: String!): Project
-    addComment(projectId: ID!, commentText: String!): Project
+    addComment(projectId: ID!, commentText: String!, commentAuthor: String!): Project
     removeProject(projectId: ID!): Project
     removeComment(projectId: ID!, commentId: ID!): Project
   }
