@@ -3,6 +3,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import AuthService from "../../utils/auth";
+import { useNavigate } from "react-router-dom";
+
 
 // import CommentForm from "./CommentForm";
 
@@ -134,6 +136,7 @@ const SingleProject = () => {
   const [member, { error, dataMember }] = useMutation(ADD_MEMBER);
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
+  const navigate = useNavigate();
 
   const onJoin = async (event) => {
     event.preventDefault();
@@ -145,7 +148,15 @@ const SingleProject = () => {
           projectId: projectId,
           memberId: memberId,
         }
+
+       
       });
+      console.log(project)
+      navigate("/comments",{state:{ 
+        projectId: projectId ,  
+        memberId:memberId,
+        projects:project,
+      }});
     } catch (error) {
       console.log(error);
     }
@@ -194,11 +205,11 @@ const SingleProject = () => {
         </div>
 
       </div>
-      <Link  className="link-button-wrapper" to="/profile">
+      <div className="link-button-wrapper">
       <button onClick={onJoin} className="profile-button  content">
         Join project
       </button>
-      </Link>
+      </div>
     </ SinglePostContainer>
 
   );
