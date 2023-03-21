@@ -103,7 +103,6 @@ function App() {
                 />
               </>
             }
-            
           />
           <Route
             path="/about"
@@ -138,7 +137,7 @@ function App() {
             }
           />
           <Route
-            path="/projects/:id"
+            path="projects/:projectId"
             element={
               <>
                 <SingleProject
