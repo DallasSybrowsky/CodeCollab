@@ -206,9 +206,19 @@ const SingleProject = () => {
 
       </div>
       <div className="link-button-wrapper">
+      {AuthService.loggedIn() ? (
       <button onClick={onJoin} className="profile-button  content">
         Join project
       </button>
+      ) : (
+        <p className="error-message">
+            You need to be logged in to join a project. Please{" "}
+            <Link className="error-login" to="/">
+              login
+            </Link>
+            .
+          </p>
+        )}
       </div>
     </ SinglePostContainer>
 
