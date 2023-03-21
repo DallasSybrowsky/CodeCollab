@@ -156,7 +156,7 @@ const SingleProject = () => {
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {project.projectAuthor} <br />
         <span style={{ fontSize: "1rem" }}>
-          created this project on {project.createdAt}
+          created this project on {project.createdAt} GMT.
         </span>
       </h3>
       <div className="bg-light py-4 blockquote-container">

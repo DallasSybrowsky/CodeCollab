@@ -57,63 +57,52 @@ const ProfileContainer = styled.div`
     font-family: montserrat;
   }
 
-
+  .Link-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
   
-  
-  .profile-button{
-  font-family: "Courier Prime", monospace;
-  transition: 0.5s;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background:  #ffc442;
-  font-family: "Courier Prime", monospace;
-  box-shadow: 0px 7px 0px 0px #cf920d;
-  margin-top: 20px;
-  margin-bottom: 25px;
-  width: 100%;
+  .profile-button {
+    font-family: "Courier Prime", monospace;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #ffc442;
+    font-family: "Courier Prime", monospace;
+    box-shadow: 0px 7px 0px 0px #cf920d;
+    margin-bottom: 25px;
+    width: 80%;
     height: 10vh;
     margin-top: 20px;
-   color:   #175d8f;
-   
+    color: #175d8f;
+
     font-weight: 600;
     text-decoration: none;
     font-size: 20px;
     padding: 10px;
     padding-top: 7px;
     transition: 0.5s;
-    
-   
   }
-    
- 
 
-}
-
-button:hover{
-  box-shadow: none;
-  transform: translateY(5px);
-  transition: all .1s linear;
-}
-
-    
-  button:hover{
+  button:hover {
     box-shadow: none;
     transform: translateY(5px);
-    transition: all .1s linear;
+    transition: all 0.1s linear;
   }
-  button:focus{
+
+  button:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all 0.1s linear;
+  }
+
+  button:focus {
     outline: none;
     text-decoration: none;
   }
-  
-  
-
-  
-
-
-
-
 `;
 
 function ProfileCard(props) {
@@ -163,12 +152,12 @@ function ProfileCard(props) {
                 </Link>
               </h3>
             </div>
-            <div className="explore__card__content">
-              <h4 className="project__author">
+            {/* <div className="explore__card__content"> */}
+            {/* <h4 className="project__author">
                 Project Description: {project.projectDescription}
-              </h4>
-              {/* <button className="share-button"> share your project</button> */}
-            </div>
+              </h4> */}
+            {/* <button className="share-button"> share your project</button> */}
+            {/* </div> */}
           </div>
         );
       });
@@ -180,7 +169,7 @@ function ProfileCard(props) {
   return (
     <ProfileContainer>
       {/* <div className="profile-button"><a href="projectform">Create a Project</a></div> */}
-      <Link to="/projectform">
+      <Link to="/projectform" className="Link-btn">
         <button className="profile-button  content">
           Create a new project
         </button>
