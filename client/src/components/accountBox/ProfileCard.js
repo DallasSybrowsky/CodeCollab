@@ -158,7 +158,7 @@ function ProfileCard(props) {
             <div className="explore__card__title">
               <h3 className="project__title">
                 {/* <a href="projects/1234asdf">Project TItle: blah</a> */}
-                <Link to={`/projects/${projects._id}`}>
+                <Link to={`/projects/${project._id}`}>
                   Project Title: {project.projectTitle}
                 </Link>
               </h3>
