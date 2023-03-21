@@ -70,6 +70,19 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    addMember: async (parent, { projectId }, context) => {
+      if (context.user) {
+        return Project.findOneAndUpdate(
+          { _id: projectId },
+        { 
+            $addToSet: { 
+            projectMembers: { memberId: context.user._id, memberUsername: context.user.username }
+          } 
+        }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     addComment: async (parent, { projectId, commentText }, context) => {
       if (context.user) {
         return Project.findOneAndUpdate(
