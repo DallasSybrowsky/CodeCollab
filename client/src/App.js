@@ -138,7 +138,7 @@ function App() {
             }
           />
           <Route
-            path="/projects/:id"
+          path="/projects/:projectTitle"
             element={
               <>
                 <SingleProject
