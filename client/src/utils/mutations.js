@@ -40,6 +40,22 @@ export const ADD_PROJECT = gql`
   }
 `;
 
+export const ADD_MEMBER = gql`
+mutation AddMember($projectId: ID!, $memberId: ID!) {
+  addMember(projectId: $projectId, memberId: $memberId) {
+    _id
+    createdAt
+    projectAuthor
+    projectDescription
+    projectMembers {
+      _id
+      memberUsername
+    }
+    projectTitle
+  }
+}
+`;
+
 export const ADD_COMMENT = gql`
   mutation addComment($projectId: ID!, $commentText: String!) {
     addComment(projectId: $projectId, commentText: $commentText) {

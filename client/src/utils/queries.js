@@ -9,6 +9,7 @@ export const QUERY_USER = gql`
       projects {
         _id
         projectTitle
+        projectDescription
         createdAt
       }
     }
@@ -23,6 +24,11 @@ export const QUERY_PROJECTS = gql`
       projectDescription
       projectAuthor
       createdAt
+      projectMembers {
+        _id
+        memberUsername
+        memberId
+      }
     }
   }
 `;

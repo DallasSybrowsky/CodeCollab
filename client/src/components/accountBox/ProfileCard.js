@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { QUERY_USER } from "../../utils/queries";
+import { QUERY_USER, QUERY_PROJECTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import AuthService from "../../utils/auth";
 import { Link } from "react-router-dom";
@@ -106,49 +106,59 @@ button:hover{
     outline: none;
     text-decoration: none;
   }
-  
-  
-
-  
-
-
-
-
 `;
 
 function ProfileCard(props) {
-  // TODO: This is dummy data - get real data through query
-  const test = [
-    {
-      projectTitle: "Bibliomania",
-      projectText: "Connect with new books!",
-      projectAuthor: "Dallas Sybrowsky",
-      createdAt: "2021-03-01T00:00:00.000Z",
-      comments: [],
-    },
-    {
-      projectTitle: "FidoFind",
-      projectText: "Connect with new books!",
-      projectAuthor: "Dallas Sybrowsky",
-      createdAt: "2021-03-01T00:00:00.000Z",
-      comments: [],
-    },
-    {
-      projectTitle: "New Portfolio",
-      projectText: "Connect with new books!",
-      projectAuthor: "Dallas Sybrowsky",
-      createdAt: "2021-03-01T00:00:00.000Z",
-      comments: [],
-    },
-  ];
-
-  const { loading, data } = useQuery(QUERY_USER, {
+  // const [projectList, setProjectList] = useState('');
+  const { loading, data: userData } = useQuery(QUERY_USER, {
     variables: { username: AuthService.getUsername() },
   });
-  const projects = data?.user.projects || [];
-  console.log(projects);
+
+
+  const { data: projectData } = useQuery(QUERY_PROJECTS);
+
+  const projects = userData?.user.projects || [];
+  // setProjectList(projects);
+
+  if (loading && !userData && userData?.length <= 0 && !projectData) {
+    return;
+  }
+
+  const findTargetProjects = () => {
+    if (!projectData) {
+      return;
+    }
+
+    const allProjects = projectData.projects;
+
+    const userId = AuthService.getId();
+
+    const final = allProjects
+    .filter((project) => {
+      const members = project.projectMembers;
+      return members.some((member) => member.memberId === userId);
+    })
+    .map((project, index) => (
+      <div key={index} className="explore__card">
+        <div className="explore__card__title">
+          <h3 className="project__title">
+            <Link to={`/projects/${project._id}`}>
+              Project Title: {project.projectTitle}
+            </Link>
+          </h3>
+        </div>
+        <div className="explore__card__content">
+          <h4 className="project__author">
+            Project Description: {project.projectDescription}
+          </h4>
+        </div>
+      </div>
+    ));
+    return final
+  }
 
   const renderProjects = () => {
+
     let result = null;
 
     if (projects) {
@@ -173,7 +183,6 @@ function ProfileCard(props) {
         );
       });
     }
-
     return result;
   };
 
@@ -186,6 +195,7 @@ function ProfileCard(props) {
         </button>
       </Link>
       {renderProjects()}
+      {findTargetProjects()}
     </ProfileContainer>
   );
 }
