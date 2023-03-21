@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
@@ -8,9 +8,12 @@ import styled from "styled-components";
 import { Fade, Slide } from "react-awesome-reveal";
 import { animated, useSpring } from "@react-spring/web";
 
+
 import Auth from "../../utils/auth";
 
 const FormContainer = styled.div`
+
+
   color: #ffc442;
   font-family: "Courier Prime", monospace;
   font-size: 1rem;
@@ -181,8 +184,12 @@ const ProjectForm = () => {
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
 
-  // const [characterCount, setCharacterCount] = useState(0);
-  // const [characterCount2, setCharacterCount2] = useState(0);
+
+
+  
+
+
+  
 
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
@@ -227,6 +234,7 @@ const ProjectForm = () => {
 
   return (
     <FormContainer>
+      
       <div className="top-container">
         <Slide className="slide-text">
           <h1>What On Your Techy Mind ?</h1>

@@ -6,6 +6,7 @@ const AboutContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+   
   }
 
   .about__title_box h1 {
