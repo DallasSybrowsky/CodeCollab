@@ -29,6 +29,7 @@ const typeDefs = gql`
   type Member {
     _id: ID
     memberUsername: String
+    memberId: ID
   }
 
   type Auth {

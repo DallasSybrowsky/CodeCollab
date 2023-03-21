@@ -30,8 +30,14 @@ getUsername() {
   return username;
 }
 
+getId() {
+  const token = localStorage.getItem('id_token');
+  const decodedToken = decode(token);
+  const id = decodedToken.data._id;
+  return id;
+}
+
   getToken() {
-    console.log(localStorage.getItem('id_token'))
     return localStorage.getItem('id_token');
   }
 

@@ -1,12 +1,13 @@
 import React from "react";
-
 // Import the `useParams()` hook
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
+import AuthService from "../../utils/auth";
 
 // import CommentForm from "./CommentForm";
 
 import { QUERY_SINGLE_PROJECT } from "../../utils/queries";
+import { ADD_MEMBER } from "../../utils/mutations";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -128,61 +129,78 @@ button:focus {
 `;
 
 
+
 const SingleProject = () => {
+  const [member, { error, dataMember }] = useMutation(ADD_MEMBER);
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { projectId } = useParams();
-  console.log('hello world')
-  console.log(projectId);
+
+  const onJoin = async (event) => {
+    event.preventDefault();
+    const memberId = AuthService.getId();
+
+    try {
+      const { data } = await member({
+        variables: {
+          projectId: projectId,
+          memberId: memberId,
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     // pass URL parameter
     variables: { projectId: projectId },
   });
 
-  console.log(data);
+  // console.log(data);
   const project = data?.project || {};
 
-  console.log(project);
+  // console.log(project);
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <SinglePostContainer>
-   
-    <div className="my-3 single-post-container">
-      <h2 className="card-header bg-dark text-light p-2 m-0">
-        {project.projectTitle} <br />
-      </h2>
-      <h3 className="card-header bg-dark text-light p-2 m-0">
-        {project.projectAuthor} <br />
-        <span style={{ fontSize: "1rem" }}>
-          created this project on {project.createdAt}
-        </span>
-      </h3>
-      <div className="bg-light py-4 blockquote-container">
-        <blockquote
-          className="p-4"
-          style={{
-            fontSize: "1.5rem",
-            fontStyle: "italic",
-            
-            lineHeight: "1.5",
-            overflow: "auto",
-          }}
-        >
-          {project.projectDescription}
-        </blockquote>
-        
+
+      <div className="my-3 single-post-container">
+        <h2 className="card-header bg-dark text-light p-2 m-0">
+          {project.projectTitle} <br />
+        </h2>
+        <h3 className="card-header bg-dark text-light p-2 m-0">
+          {project.projectAuthor} <br />
+          <span style={{ fontSize: "1rem" }}>
+            created this project on {project.createdAt}
+          </span>
+        </h3>
+        <div className="bg-light py-4 blockquote-container">
+          <blockquote
+            className="p-4"
+            style={{
+              fontSize: "1.5rem",
+              fontStyle: "italic",
+
+              lineHeight: "1.5",
+              overflow: "auto",
+            }}
+          >
+            {project.projectDescription}
+          </blockquote>
+
+        </div>
+
       </div>
-     
-    </div>
-    <Link  className="link-button-wrapper" to="/projectform">
-        <button className="profile-button  content">
-          Join project
-        </button>
+      <Link  className="link-button-wrapper" to="/profile">
+      <button onClick={onJoin} className="profile-button  content">
+        Join project
+      </button>
       </Link>
-   </ SinglePostContainer>
-    
+    </ SinglePostContainer>
+
   );
 };
 
