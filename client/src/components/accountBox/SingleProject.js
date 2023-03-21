@@ -11,20 +11,16 @@ import { ADD_MEMBER } from "../../utils/mutations";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 const SinglePostContainer = styled.div`
-.single-post-container {
-  border: 1px solid #4dc4d2;
-  border-radius: 5px;
-  padding: 4rem;
-  margin: 4rem;
-  background-color: 
-  
+  .single-post-container {
+    border: 1px solid #4dc4d2;
+    border-radius: 5px;
+    padding: 4rem;
+    margin: 4rem;
     display: flex;
     flex-direction: column;
     height: 100%;
   }
-
 
   h2 {
     font-size: 1.5rem;
@@ -43,6 +39,7 @@ const SinglePostContainer = styled.div`
     font-size: 2rem;
     color: #ffc442;
   }
+
   .blockquote-container {
     flex: 1; /* set to 1 to fill remaining space */
     border: 1px solid #ffc442;
@@ -52,7 +49,7 @@ const SinglePostContainer = styled.div`
     background-color: #175d8f;
     overflow: auto;
   }
-  
+
   blockquote {
     font-size: 1rem;
     color: #ffc442;
@@ -63,72 +60,55 @@ const SinglePostContainer = styled.div`
     white-space: pre-wrap;
     padding: 1rem;
   }
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  
 
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
 
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courier Prime", monospace;
+    color: #4dc4d2;
+    width: 200px;
+    color: #175d8f;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 7px;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #ffc442;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0px 7px 0px 0px #cf920d;
+  }
 
-  
-}
+  button:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all 0.1s linear;
+  }
 
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  font-family: "Courier Prime", monospace;
-  color: #4dc4d2;
-  width: 200px;
-  color: #175d8f;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  padding-top: 7px;
-  transition: 0.5s;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-  background: #ffc442;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  button:focus {
+    outline: none;
+  }
 
-  box-shadow: 0px 7px 0px 0px #cf920d;
-}
-button:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-  transition: all 0.1s linear;
-  
-}
-button:focus {
-  outline: none;
-  
-}
-.link-button-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  text-decoration: none;
-  font-family: "Courier Prime", monospace;
-  
-
-}
-
-
-   
-
-
-
-
-
+  .link-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: "Courier Prime", monospace;
+  }
 `;
-
-
 
 const SingleProject = () => {
   const [member, { error, dataMember }] = useMutation(ADD_MEMBER);
@@ -144,12 +124,12 @@ const SingleProject = () => {
         variables: {
           projectId: projectId,
           memberId: memberId,
-        }
+        },
       });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     // pass URL parameter
@@ -166,7 +146,6 @@ const SingleProject = () => {
 
   return (
     <SinglePostContainer>
-
       <div className="my-3 single-post-container">
         <h2 className="card-header bg-dark text-light p-2 m-0">
           {project.projectTitle} <br />
@@ -190,17 +169,14 @@ const SingleProject = () => {
           >
             {project.projectDescription}
           </blockquote>
-
         </div>
-
       </div>
-      <Link  className="link-button-wrapper" to="/profile">
-      <button onClick={onJoin} className="profile-button  content">
-        Join project
-      </button>
+      <Link className="link-button-wrapper" to="/profile">
+        <button onClick={onJoin} className="profile-button  content">
+          Join project
+        </button>
       </Link>
-    </ SinglePostContainer>
-
+    </SinglePostContainer>
   );
 };
 
