@@ -1,12 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 
 import { ADD_COMMENT } from "../../utils/mutations";
+import { QUERY_SINGLE_PROJECT } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -74,7 +75,10 @@ function Comments({projectId}) {
   const location = useLocation();
 
 
-
+  const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
+    // pass URL parameter
+    variables: { projectId: location.state.projects._id },
+  });
 
   function handleCommentChange(event) {
     const { name, value } = event.target;
@@ -87,30 +91,50 @@ function Comments({projectId}) {
 
 
 
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await addComment({
         variables: {
-          projectId,
+          projectId: location.state.projects._id,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
         },
       });
       // Handle submitting the comment to the server or state management system
-      console.log("Submitting comment:", commentText);
       setCommentText("");
     } catch (err) {
       console.error(err);
     }
   };
 
-  console.log(location.state.projects);
+  const renderComments = () => {
+    
+    const comments = data?.project.comments || {}
+    let result = null;
 
-
-
+    if (comments.length > 0) {
+      result = comments.map((comment, i) => {
+        return (
+          <div key={i} className="explore__card">
+            <div className="explore__card__title">
+              <h3 className="project__title">                              
+                  Comment: {comment.commentText}
+              </h3>
+            </div>
+            <div className="explore__card__content">
+              <h4 className="project__author">
+                User: {comment.commentAuthor}
+                <br/>
+                Time: {comment.createdAt}
+              </h4>
+            </div>
+          </div>
+        );
+      });
+    }
+    return result;
+  };
 
   return (
     <CommentContainer>
@@ -120,6 +144,7 @@ function Comments({projectId}) {
      
       <div>{location.state.memberId}</div>
       <div>{location.state.projectId}</div>
+      <div>{renderComments()}</div>
       <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleSubmit}
