@@ -22,6 +22,7 @@ import About from "./components/accountBox/About";
 import ProfileCard from "./components/accountBox/ProfileCard";
 import ProjectForm from "./components/accountBox/ProjectForm";
 import SingleProject from "./components/accountBox/SingleProject";
+import CommentForm from "./components/accountBox/CommentForm"
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -145,6 +146,7 @@ function App() {
                   projectTitle={SingleProject.projectTitle}
                   projectDescription={SingleProject.projectDescription}
                 />
+                <CommentForm/>
               </>
             }
           />

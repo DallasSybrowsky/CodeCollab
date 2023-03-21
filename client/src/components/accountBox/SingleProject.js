@@ -138,7 +138,7 @@ const SingleProject = () => {
   const onJoin = async (event) => {
     event.preventDefault();
     const memberId = AuthService.getId();
-
+    
     try {
       const { data } = await member({
         variables: {
@@ -194,11 +194,12 @@ const SingleProject = () => {
         </div>
 
       </div>
-      <Link  className="link-button-wrapper" to="/profile">
+      {/* <Link  className="link-button-wrapper" to="/profile"> */}
+        {/* if the project is included in the users project list, then join project button is hidden and cmomments are appended to the bottom of the screen */}
       <button onClick={onJoin} className="profile-button  content">
         Join project
       </button>
-      </Link>
+      {/* </Link> */}
     </ SinglePostContainer>
 
   );
