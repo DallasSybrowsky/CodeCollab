@@ -147,6 +147,7 @@ const SingleProject = () => {
         variables: {
           projectId: projectId,
           memberId: memberId,
+          
         }
 
        
@@ -155,7 +156,10 @@ const SingleProject = () => {
       navigate("/comments",{state:{ 
         projectId: projectId ,  
         memberId:memberId,
-        projects:project,
+       
+        projectDescription:project.projectDescription,
+        
+
       }});
     } catch (error) {
       console.log(error);
@@ -164,7 +168,11 @@ const SingleProject = () => {
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     // pass URL parameter
-    variables: { projectId: projectId },
+    variables: {
+       projectId: projectId,
+     
+        
+       },
   });
 
   // console.log(data);
@@ -200,7 +208,12 @@ const SingleProject = () => {
             }}
           >
             {project.projectDescription}
+
           </blockquote>
+          <h4>
+          
+
+          </h4>
 
         </div>
 

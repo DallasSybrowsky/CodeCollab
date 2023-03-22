@@ -9,72 +9,81 @@ import styled from "styled-components";
 import { ADD_COMMENT } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
-
-
+import { useQuery } from "@apollo/client";
 
 const CommentContainer = styled.div`
-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 800px;
-  padding: 1rem;
-  width: 100%;
-  max-width: 800px;
-  padding: 1rem;
-  border: 1px solid var(--color-dark-blue);
-  border-radius: 0.5rem;
-  background-color: var(--color-dark-blue);
-  box-shadow: 0 0 0.5rem var(--color-dark-blue);
   margin: 1rem;
-  padding: 1rem 2rem;
-  transition: 0.2s ease-in-out;
-}
-
+  width: 100%;
+  max-width: 800px;
+  
   h1 {
     color: var(--color-yellow);
     text-shadow: 0.1rem 0.1rem 0.25rem var(--color-bg);
     font-size: 1.5rem;
     font-family: montserrat;
-   
+    text-align: center;
+  }
 
-}
-textarea {
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border: 1px solid var(--color-light-blue);
-  border-radius: 0.5rem;
-  background-color: var(--color-light-blue);
-  box-shadow: 0 0 0.5rem var(--color-dark-blue);
-  transition: 0.2s ease-in-out;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem;
+    border: 1px solid var(--color-dark-blue);
+    border-radius: 0.5rem;
+    background-color: var(--color-dark-blue);
+    box-shadow: 0 0 0.5rem var(--color-dark-blue);
+    transition: 0.2s ease-in-out;
 
-button {
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border: 1px solid var(--color-light-blue);
-  border-radius: 0.5rem;
-  background-color: var(--color-light-blue);
-  box-shadow: 0 0 0.5rem var(--color-dark-blue);
-  transition: 0.2s ease-in-out;
-}
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
 
+    textarea {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 1px solid var(--color-light-blue);
+      border-radius: 0.5rem;
+      background-color: var(--color-light-blue);
+      box-shadow: 0 0 0.5rem var(--color-dark-blue);
+      transition: 0.2s ease-in-out;
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+    }
 
+    button {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 1px solid var(--color-light-blue);
+      border-radius: 0.5rem;
+      background-color: var(--color-light-blue);
+      box-shadow: 0 0 0.5rem var(--color-dark-blue);
+      transition: 0.2s ease-in-out;
+    }
+  }
 `;
 
-function Comments({projectId}) {
+
+
+function Comments({projectId,commentText}) {
     
-  const [commentText, setCommentText] = useState("");
+  const [comment, setCommentText] = useState("");
   const [addComment, { error }] = useMutation(ADD_COMMENT);
 
+  
   // this is the data from the join button
   const location = useLocation();
 
 
-
+  
 
   function handleCommentChange(event) {
     const { name, value } = event.target;
@@ -96,11 +105,12 @@ function Comments({projectId}) {
         variables: {
           projectId,
           commentText,
-          commentAuthor: Auth.getProfile().data.username,
+          comment,
+         
         },
       });
       // Handle submitting the comment to the server or state management system
-      console.log("Submitting comment:", commentText);
+      console.log("Submitting comment:", comment);
       setCommentText("");
     } catch (err) {
       console.error(err);
@@ -120,6 +130,10 @@ function Comments({projectId}) {
      
       <div>{location.state.memberId}</div>
       <div>{location.state.projectId}</div>
+      <div>{location.state.projectName}</div>
+      <div>{location.state.projectDescription}</div>
+      
+
       <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleSubmit}
@@ -128,7 +142,7 @@ function Comments({projectId}) {
               <textarea
                 name="commentText"
                 placeholder="Add your comment..."
-                value={commentText}
+                value={comment}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleCommentChange}
@@ -140,11 +154,7 @@ function Comments({projectId}) {
                 Add Comment
               </button>
             </div>
-          </form>
-         
-    
-        
-      
+          </form> 
     </div>
     </CommentContainer>
   );
