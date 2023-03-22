@@ -229,11 +229,11 @@ const ProjectForm = () => {
     <FormContainer>
       <div className="top-container">
         <Slide className="slide-text">
-          <h1>What On Your Techy Mind ?</h1>
+          <h1>What do you want to create?</h1>
         </Slide>
 
         <Fade className="fade-text" delay={1e3} cascade damping={1e-1}>
-          .........Post a new project to share with the community
+          .........Create a new project and it share with the community
         </Fade>
 
         {Auth.loggedIn() ? (
