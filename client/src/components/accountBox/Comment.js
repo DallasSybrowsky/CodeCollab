@@ -74,6 +74,7 @@ const CommentContainer = styled.div`
     // flex-direction: column;
     // justify-content: center;
   }
+  
   textarea {
     resize: none;
     margin: 0.5rem 0;
@@ -105,6 +106,7 @@ const CommentContainer = styled.div`
     box-shadow: 0 0 0.5rem var(--color-dark-blue);
     transition: 0.2s ease-in-out;
   }
+
   button:hover {
     margin: 0.5rem 0;
     padding: 0.5rem;
