@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# CodeCollab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+CodeCollab is a MERN Stack web application that allows developers to collaborate on coding projects. Users can create an account, create a new project, and invite collaborators to join their project. Once collaborators join the project, they can submit comments to communicate to the project owner and other project members.
 
-## Available Scripts
+## Table of Contents (Optional)
+If your README is long, add a table of contents to make it easy for users to find what they need.
+- [Installation](#installation)
+- [Usage](#usage-live-site)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
-In the project directory, you can run:
+## Installation
+To install CodeCollab on your local machine, follow these steps:
+1. Clone the repository to your local machine using the command `git clone https://github.com/DallasSybrowsky/CodeCollab.git`.
+2. Navigate to the project directory using the command `cd CodeCollab`.
+3. Install the project dependencies using the command `npm install`.
+4. Start the server and client using the command `npm run develop`.
+5. Open a web browser and navigate to http://localhost:3000.
 
-### `npm start`
+## Usage (Live Site)
+To use CodeCollab, follow these steps:
+1. Navigate to our [live website](https://code-collab-dallas.herokuapp.com/)
+2. Create an account by clicking the "Sign up" button and entering your information.
+3. Create a new project by navigating to your profile, clicking the "New project" button, and entering a name and description for your project.
+4. Invite collaborators to your project by sharing the project's URL with other CodeCollab subscribers.
+5. Collaborate on the project by commenting code, suggestions, encouragements, stack-overflow links, etc.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contributing
+1. If you would like to contribute to CodeCollab, follow these steps:
+2. Clone the repository to your local machine.
+3. Create a new branch for your feature using the command `git checkout -b <branch-name>`.
+4. Make your changes and commit them using the command `git commit -m "Add your message here"`.
+5. Push your changes to your fork using the command `git push origin <branch-name>`.
+6. Create a pull request from your fork to the main repository. Our team of developers will review the pull requests as soon as we can.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Credits
+If you have any questions, you may contact us directly at:
 
-### `npm test`
+[Ana Bennett](https://github.com/Sydneychick2748)
+[Joe Brigantino](https://github.com/brigantinojoe)
+[Dallas Sybrowsky](https://github.com/DallasSybrowsky)
+[Risvi Tareq](https://github.com/ivsir)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## License
+CodeCollab is released under the MIT License. See LICENSE.md for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for considering CodeCollab! If you have any questions or issues, please feel free to submit an issue on GitHub.
