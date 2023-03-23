@@ -29,6 +29,15 @@ const ProfileContainer = styled.div`
     box-shadow: 0 0 0.5rem var(--color-light-blue);
   }
 
+  h1 {
+    font-family: montserrat;
+    font-size: 2rem;
+    color: var(--color-yellow);
+    text-shadow: 0.1rem 0.1rem 0.25rem var(--color-bg);
+    text-align: center;
+    margin: 1rem;
+  }
+
   .project__title {
     margin-top: 0.8rem;
     color: var(--color-yellow);
@@ -172,6 +181,7 @@ function ProfileCard(props) {
     <ProfileContainer>
       {/* <div className="profile-button"><a href="projectform">Create a Project</a></div> */}
       <Link to="/projectform">
+        <h1 className="page__title">My Projects</h1>
         <div className="btn-container">
           <button className="profile-button content">
             Create a new project

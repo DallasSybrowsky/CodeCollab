@@ -13,105 +13,105 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SinglePostContainer = styled.div`
-.single-post-container {
-  border: 1px solid var(--color-light-blue);
-  border-radius: 5px;
-  padding: 4rem;
-  margin: 4rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+  .single-post-container {
+    border: 1px solid var(--color-light-blue);
+    border-radius: 5px;
+    padding: 4rem;
+    margin: 4rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-h2 {
-  margin-left: 1rem;
-  font-size: 1.5rem;
-  font-family: montserrat;
-  font-weight: bold;
-  color: var(--color-yellow);
-}
+  h2 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    font-family: montserrat;
+    font-weight: bold;
+    color: var(--color-yellow);
+  }
 
-h3 {
-  margin-left: 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--color-light-blue);
-  font-style: italic;
-  font-family: montserrat;
-}
+  h3 {
+    margin-left: 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-light-blue);
+    font-style: italic;
+    font-family: montserrat;
+  }
 
-p {
-  font-size: 2rem;
-  color: var(--color-yellow);
-}
+  p {
+    font-size: 2rem;
+    color: var(--color-yellow);
+  }
 
-.blockquote-container {
-  flex: 1; /* set to 1 to fill remaining space */
-  border: 1px solid var(--color-yellow);
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 1rem;
-  background-color: var(--color-dark-blue);
-  overflow: auto;
-}
-  
-blockquote {
-  font-size: 1rem;
-  font-family: montserrat;
-  color: var(--color-yellow);
-  border: none;
-  padding: 0.5rem;
-  overflow: auto;
-  max-height: 100%;
-  white-space: pre-wrap;
-  padding: 1rem;
-}
-  
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+  .blockquote-container {
+    flex: 1; /* set to 1 to fill remaining space */
+    border: 1px solid var(--color-yellow);
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: var(--color-dark-blue);
+    overflow: auto;
+  }
 
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: montserrat;
-  width: 200px;
-  color: var(--color-dark-blue);
-  font-size: 1.4rem;
-  font-weight: bold;
-  padding: 10px;
-  padding-top: 7px;
-  transition: 0.5s;
-  cursor: pointer;
-  border-radius: .5rem;
-  border: none;
-  background: var(--color-yellow);
-  margin-top: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0px 7px 0px 0px #cf920d;
-}
+  blockquote {
+    font-size: 1rem;
+    font-family: montserrat;
+    color: var(--color-yellow);
+    border: none;
+    padding: 0.5rem;
+    overflow: auto;
+    max-height: 100%;
+    white-space: pre-wrap;
+    padding: 1rem;
+  }
 
-button:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-  transition: all 0.1s linear;
-}
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
 
-button:focus {
-  outline: none;
-}
-.link-button-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  text-decoration: none;
-  font-family: "Courier Prime", monospace;
-}
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: montserrat;
+    width: 200px;
+    color: var(--color-dark-blue);
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 10px;
+    padding-top: 7px;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: none;
+    background: var(--color-yellow);
+    margin-top: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0px 7px 0px 0px #cf920d;
+  }
+
+  button:hover {
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all 0.1s linear;
+  }
+
+  button:focus {
+    outline: none;
+  }
+  .link-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none;
+    font-family: "Courier Prime", monospace;
+  }
 `;
 
 const SingleProject = () => {
@@ -165,7 +165,6 @@ const SingleProject = () => {
         </h2>
         <h3 className="card-header bg-dark text-light p-2 m-0">
           {project.projectAuthor} created this project on {project.createdAt}
-
         </h3>
         <div className="bg-light py-4 blockquote-container">
           <blockquote

@@ -146,11 +146,10 @@ function App() {
                   projectTitle={SingleProject.projectTitle}
                   projectDescription={SingleProject.projectDescription}
                 />
-
               </>
             }
           />
-            <Route
+          <Route
             path="/comments"
             element={
               <>
@@ -158,7 +157,6 @@ function App() {
               </>
             }
           />
-          
         </Routes>
       </Router>
       <Footer />

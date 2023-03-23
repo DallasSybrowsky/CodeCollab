@@ -3,31 +3,19 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 
 const AvatarContainer = styled.div`
-  color:#FFC442;
+  color: #ffc442;
   font-family: "Courier Prime", monospace;
   font-size: 1rem;
- 
+
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
   gap: 6em;
 
-
   gap: 1em;
-  
+
   justify-content: center;
-
 `;
-
-
-
-
-
-
-
-
-
-
 
 // function SetAvatar() {
 //   const [avatars, setAvatars] = useState([]);
@@ -85,40 +73,39 @@ const AvatarContainer = styled.div`
 
 // export default SetAvatar;
 
-
-
-
-
 function SetAvatar() {
-  
-  
-  const api = 'https://api.multiavatar.com/';
-  const avatarIds = ['333', '26839', '296547', '8647586', '759384', '394856'];
+  const api = "https://api.multiavatar.com/";
+  const avatarIds = ["333", "26839", "296547", "8647586", "759384", "394856"];
 
   const [avatarData, setAvatarData] = useState({});
 
   useEffect(() => {
-    avatarIds.forEach(avatarId => {
+    avatarIds.forEach((avatarId) => {
       fetch(api + avatarId)
-        .then(res => res.text())
-        .then(svg => setAvatarData(prevAvatarData => ({
-          ...prevAvatarData,
-          [avatarId]: svg
-        })));
+        .then((res) => res.text())
+        .then((svg) =>
+          setAvatarData((prevAvatarData) => ({
+            ...prevAvatarData,
+            [avatarId]: svg,
+          }))
+        );
     });
   }, []);
 
   return (
     <AvatarContainer>
-       <div className="title-container">
-       <h1> Please pick your  Avatar</h1>
-    </div>
-    <div>
-      {avatarIds.map(avatarId => (
-        <div key={avatarId} dangerouslySetInnerHTML={{__html: avatarData[avatarId]}} />
-      ))}
-    </div>
+      <div className="title-container">
+        <h1> Please pick your Avatar</h1>
+      </div>
+      <div>
+        {avatarIds.map((avatarId) => (
+          <div
+            key={avatarId}
+            dangerouslySetInnerHTML={{ __html: avatarData[avatarId] }}
+          />
+        ))}
+      </div>
     </AvatarContainer>
   );
 }
- export default SetAvatar;
+export default SetAvatar;

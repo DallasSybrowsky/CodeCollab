@@ -2,31 +2,29 @@
   text-align: center;
 }
 
-#muted-link{
- padding: 20px !important;
- font-size: 12px !important;
- margin-top: 20px !important;
+#muted-link {
+  padding: 20px !important;
+  font-size: 12px !important;
+  margin-top: 20px !important;
 }
 
-#small-text
-{
+#small-text {
   font-size: 12px;
 }
 
-
-#bold{
-  color: #175D8F;
+#bold {
+  color: #175d8f;
 }
 
-#signup-container{
+#signup-container {
   padding-bottom: 2em;
 }
 
-#signup-button{
+#signup-button {
   padding: 15px;
 }
 
-#login-button{
+#login-button {
   margin-bottom: 20px !important;
 }
 

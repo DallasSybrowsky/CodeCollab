@@ -1,7 +1,6 @@
-
 import styled from "styled-components";
-import { QUERY_PROJECTS } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
+import { QUERY_PROJECTS } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 const ExploreContainer = styled.div`
@@ -26,6 +25,15 @@ const ExploreContainer = styled.div`
 
   .explore__card:hover {
     box-shadow: 0 0 0.5rem var(--color-light-blue);
+  }
+
+  h1 {
+    font-family: montserrat;
+    font-size: 2rem;
+    color: var(--color-yellow);
+    text-shadow: 0.1rem 0.1rem 0.25rem var(--color-bg);
+    text-align: center;
+    margin 1rem;
   }
 
   .project__title {
@@ -64,18 +72,19 @@ function ExploreCard(props) {
 
   return (
     <ExploreContainer>
+      <h1 className="page__title">Explore</h1>
       {projects.map((projects) => (
         <div key={projects._id} className="explore__card">
           <div className="explore__card__title">
             <h3 className="project__title">
-            <Link to={`/projects/${projects._id}`}>
+              <Link to={`/projects/${projects._id}`}>
                 {projects.projectTitle}
               </Link>
             </h3>
           </div>
           <div className="explore__card__content">
             <h4 className="project__author">
-             Created By: {projects.projectAuthor}
+              Created By: {projects.projectAuthor}
             </h4>
           </div>
         </div>
@@ -85,4 +94,3 @@ function ExploreCard(props) {
 }
 
 export default ExploreCard;
-
