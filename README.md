@@ -7,6 +7,7 @@ CodeCollab is a MERN Stack web application that allows developers to collaborate
 If your README is long, add a table of contents to make it easy for users to find what they need.
 - [Installation](#installation)
 - [Usage](#usage-live-site)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
@@ -26,6 +27,32 @@ To use CodeCollab, follow these steps:
 3. Create a new project by navigating to your profile, clicking the "New project" button, and entering a name and description for your project.
 4. Invite collaborators to your project by sharing the project's URL with other CodeCollab subscribers.
 5. Collaborate on the project by commenting code, suggestions, encouragements, stack-overflow links, etc.
+
+## Screenshots
+
+Login Page:
+
+<img src="./client/src/assets/LoginPage.png" style="70%">
+
+Explore Page:
+
+<img src="./client/src/assets/ExplorePage.png" style="70%">
+
+My Projects:
+
+<img src="./client/src/assets/MyProjects.png" style="70%">
+
+Single Project:
+
+<img src="./client/src/assets/SingleProject.png" style="70%">
+
+Create Project:
+
+<img src="./client/src/assets/CreateProject.png" style="70%">
+
+Comments:
+
+<img src="./client/src/assets/Comments.png" style="70%">
 
 ## Contributing
 1. If you would like to contribute to CodeCollab, follow these steps:
