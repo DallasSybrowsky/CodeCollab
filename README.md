@@ -3,7 +3,7 @@
 ## Description
 CodeCollab is a MERN Stack web application that allows developers to collaborate on coding projects. Users can create an account, create a new project, and invite collaborators to join their project. Once collaborators join the project, they can submit comments to communicate to the project owner and other project members.
 
-## Table of Contents (Optional)
+## Table of Contents
 If your README is long, add a table of contents to make it easy for users to find what they need.
 - [Installation](#installation)
 - [Usage](#usage-live-site)
