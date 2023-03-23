@@ -18,6 +18,7 @@ const BoxContainer = styled.div`
   position: relative;
   overflow: hidden;
 `;
+
 const TopContainer = styled.div`
   width: 100%;
   height: 250px;
@@ -27,6 +28,7 @@ const TopContainer = styled.div`
   padding: 0 1.8em;
   padding-bottom: 5em;
 `;
+
 const BackDrop = styled(motion.div)`
 width: 160%;
 height: 550px;
@@ -96,8 +98,8 @@ const expandingTransition = {
 
 //  this collapses the form when you click on the button
 
-export  default function AccountBox(props) {
-    //this is the state that toggles the form
+export default function AccountBox(props) {
+  //this is the state that toggles the form
 
   const [isExpanded, setExpanded] = useState(false);
 
@@ -114,15 +116,14 @@ export  default function AccountBox(props) {
 
   //   this toggles
   const switchToSignup = () => {
-    console.log("running")
+    console.log("running");
     playExpandingAnimation();
     setTimeout(() => {
       setActive("signup");
     }, 400);
   };
 
-
-    //   this toggles
+  //   this toggles
   const switchToSignin = () => {
     playExpandingAnimation();
     setTimeout(() => {
@@ -132,7 +133,11 @@ export  default function AccountBox(props) {
 
   //this is the context value that is passed to the children components
 
-  const contextValue = { switchToSignup, switchToSignin, playExpandingAnimation };
+  const contextValue = {
+    switchToSignup,
+    switchToSignin,
+    playExpandingAnimation,
+  };
 
   return (
     <AccountContext.Provider value={contextValue}>

@@ -1,10 +1,10 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useQuery } from "@apollo/client";
 
-import ProjectList from './ProjectList.js';
-import ProjectForm from './ProjectForm';
+import ProjectList from "./ProjectList.js";
+import ProjectForm from "./ProjectForm";
 
-import { QUERY_PROJECTS } from '../../utils/queries';
+import { QUERY_PROJECTS } from "../../utils/queries";
 
 const Explore = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
@@ -15,7 +15,7 @@ const Explore = () => {
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
+          style={{ border: "1px dotted #1a1a1a" }}
         >
           <ProjectForm />
         </div>

@@ -25,20 +25,20 @@ const Nav = () => {
           <li>
             <a href="/about">About</a>
           </li>
-            {Auth.loggedIn() ? (
-              <>
-                <li>
-                  <a href="/profile">My Projects</a>
-                </li>
-                <li onClick={logout}>
-                  <a href="/">Logout</a>
-                </li>
-              </>
-            ) : (
-                <li>
-                  <a href="/">Login</a>
-                </li>
-            )}
+          {Auth.loggedIn() ? (
+            <>
+              <li>
+                <a href="/profile">My Projects</a>
+              </li>
+              <li onClick={logout}>
+                <a href="/">Logout</a>
+              </li>
+            </>
+          ) : (
+            <li>
+              <a href="/">Login</a>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

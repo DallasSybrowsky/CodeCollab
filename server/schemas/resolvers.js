@@ -1,29 +1,29 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Project } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Project } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   // fetches the following data to be loaded onto the page
   Query: {
     users: async () => {
-      return User.find().populate('projects');
+      return User.find().populate("projects");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('projects');
+      return User.findOne({ username }).populate("projects");
     },
     projects: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Project.find(params).sort({ createdAt: -1 });
     },
     project: async (parent, { projectId }) => {
-      console.log(projectId)
+      console.log(projectId);
       return Project.findOne({ _id: projectId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('projects');
+        return User.findOne({ _id: context.user._id }).populate("projects");
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 
@@ -38,13 +38,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
@@ -52,7 +52,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addProject: async (parent, { projectTitle, projectDescription }, context) => {
+    addProject: async (
+      parent,
+      { projectTitle, projectDescription },
+      context
+    ) => {
       if (context.user) {
         const project = await Project.create({
           projectTitle,
@@ -68,20 +72,23 @@ const resolvers = {
 
         return project;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     addMember: async (parent, { projectId }, context) => {
       if (context.user) {
         return Project.findOneAndUpdate(
           { _id: projectId },
-        { 
-            $addToSet: { 
-            projectMembers: { memberId: context.user._id, memberUsername: context.user.username }
-          } 
-        }
+          {
+            $addToSet: {
+              projectMembers: {
+                memberId: context.user._id,
+                memberUsername: context.user.username,
+              },
+            },
+          }
         );
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     addComment: async (parent, { projectId, commentText }, context) => {
       if (context.user) {
@@ -98,7 +105,7 @@ const resolvers = {
           }
         );
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     removeProject: async (parent, { projectId }, context) => {
       if (context.user) {
@@ -114,7 +121,7 @@ const resolvers = {
 
         return project;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     removeComment: async (parent, { projectId, commentId }, context) => {
       if (context.user) {
@@ -131,7 +138,7 @@ const resolvers = {
           { new: true }
         );
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };

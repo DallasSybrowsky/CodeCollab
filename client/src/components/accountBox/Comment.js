@@ -12,7 +12,7 @@ import Auth from "../../utils/auth";
 
 const CommentBox = styled.div`
   h3 {
-    border:2px solid var(--color-dark-blue);
+    border: 2px solid var(--color-dark-blue);
     padding: 0.5rem 0.5rem 0.5rem 2rem;
     border-radius: 0.5rem;
     margin: 0.5rem 1rem;
@@ -30,6 +30,7 @@ const CommentBox = styled.div`
     margin-right: 1.5rem;
   }
 `;
+
 const CommentContainer = styled.div`
   form {
     display: flex;
@@ -197,7 +198,7 @@ function Comments({ projectId }) {
               placeholder="Add your comment..."
               value={commentText}
               className="comment__textarea"
-              style={{ width:"600px" }}
+              style={{ width: "600px" }}
               onChange={handleCommentChange}
             ></textarea>
           </div>

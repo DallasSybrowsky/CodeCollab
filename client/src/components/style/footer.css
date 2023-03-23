@@ -29,8 +29,8 @@
 }
 
 .footer__copyright {
-    font-family: "Courier Prime", monospace;
-    font-size: 1.2rem;
-    color: var(--color-dark-blue);
-    text-align: center;
+  font-family: "Courier Prime", monospace;
+  font-size: 1.2rem;
+  color: var(--color-dark-blue);
+  text-align: center;
 }
